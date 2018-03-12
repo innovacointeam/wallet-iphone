@@ -15,10 +15,14 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Settings"
         navigationItem.backBarButtonItem?.title = ""
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Settings"
+    }
+    
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
@@ -51,7 +55,20 @@ class SettingsTableViewController: UITableViewController {
         }
 
         cell.textLabel?.textColor = UIColor.settingsTintColor
-        
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section, indexPath.row) {
+        // Select change password
+        case (1,0):
+            RouterViewControllers.shared.openChangePassword()
+
+        case (1,1):
+            RouterViewControllers.shared.openChangePincode()
+        case (1,2):
+            RouterViewControllers.shared.openResetPincode()
+        default:
+            break
+        }
+    }
 }

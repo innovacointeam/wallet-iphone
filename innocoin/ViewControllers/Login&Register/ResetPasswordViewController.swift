@@ -27,7 +27,12 @@ class ResetPasswordViewController: UIViewController {
 
     private var questionFrame = CGRect.zero
     private lazy var questionTableView: UIView = {
-        let newView = UIView(frame: popupContainer.frame)
+        var frame = CGRect.zero
+        frame.origin = questionButton.convert(questionButton.frame.origin, to: view)
+        frame.size.width = asnwerField.frame.size.width
+        frame.size.height = 200
+        questionFrame = frame
+        let newView = UIView(frame: frame)
         newView.frame.size.height = 0
         newView.layer.cornerRadius = 10
         newView.clipsToBounds = true
@@ -87,7 +92,11 @@ class ResetPasswordViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        questionFrame = popupContainer.frame
+        var frame = CGRect.zero
+        frame.origin = questionButton.convert(questionButton.frame.origin, to: view)
+        frame.size.width = asnwerField.frame.size.width
+        frame.size.height = 200
+        questionFrame = frame
     }
     
     override func dismissKeyboard() {
@@ -119,23 +128,39 @@ class ResetPasswordViewController: UIViewController {
     
     
     private func resetPassword() {
-        if let email = emailField.text, !email.isEmpty {
-            if emailField.isValid() {
-                navigationController?.isNavigationBarHidden = true
-                bluring()
-                showActivityIndicatory(in: view, text: "Reset password. Please wait...")
-                LoginController.shared.resetPassword(email: email) { result in
-                    DispatchQueue.main.async {
-                        self.popupContainer.isHidden = false
-                        self.view.bringSubview(toFront: self.popupContainer)
-                    }
-                }
-            } else {
-                error = "Wrong email format"
-            }
-        } else {
-            error = "Email must be filled"
+        guard let email = emailField.text, !email.isEmpty, emailField.isValid() else {
+            showAlert("Email must be in correct format", title: "Reset password")
+            return
         }
+        
+        guard let question = questionButton.titleLabel?.text,
+            LoginController.shared.questions.contains(question) else {
+                showAlert("Must select qestions from list", title: "Reset password")
+                return
+        }
+        
+        guard let answer = asnwerField.text, !answer.isEmpty else {
+            showAlert("Answer must be inputed", title: "Reset password")
+            return
+        }
+        
+        navigationController?.isNavigationBarHidden = true
+        let blur = bluring()
+        let activity = showActivityIndicatory(in: view, text: "Reset password. Please wait...")
+        
+        RESTController.shared.resetPassword(email: email, question: question, answer: answer) { [weak self] response in
+            blur.removeFromSuperview()
+            activity.removeFromSuperview()
+            self?.navigationController?.isNavigationBarHidden = false
+            
+            switch response {
+            case .error(let reason, let code):
+                self?.showAlert("\(code ?? 0): \(reason ?? "unknown")", title: "Reset Error")
+            case .success:
+                RouterViewControllers.shared.pop()
+            }
+        }
+
     }
     
     private func hideQuestionstableIfNeed() {

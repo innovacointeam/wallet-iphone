@@ -22,18 +22,17 @@ class MenuTableViewController: UITableViewController {
         }
         
         app.mainTabBar?.hideMenu()
-        
-        var controller: UIViewController
+
         switch indexPath.row {
         case 0:
-            controller = storyboard!.instantiateViewController(withIdentifier: "AddressbookEmptyViewController")
+            RouterViewControllers.shared.openAddressBook()
+            return
         case 1:
-            controller = storyboard!.instantiateViewController(withIdentifier: "SettingsTableViewController")
+            let controller = storyboard!.instantiateViewController(withIdentifier: "SettingsTableViewController")
+            app.mainTabBar?.push(controller, animated: false)
         default:
            return
         }
-        
-        app.mainTabBar?.push(controller, animated: false)
     }
 
 }

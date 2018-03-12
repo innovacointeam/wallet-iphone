@@ -20,15 +20,18 @@ class QuestionsTableViewController: UITableViewController {
     
     private var gesture: UITapGestureRecognizer!
     
+    var themeBackgroundColor = UIColor.backgroundViewController
+    var themeTextColor = UIColor.white
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         gesture = UITapGestureRecognizer(target: self, action: #selector(tappetInTable(_:)))
         tableView.addGestureRecognizer(gesture)
         
-        tableView.tableFooterView = nil
+        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        view.backgroundColor = UIColor.backgroundViewController
+        view.backgroundColor = themeBackgroundColor
     }
 
     // MARK: - Table view data source
@@ -43,8 +46,9 @@ class QuestionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath)
         cell.textLabel?.text = LoginController.shared.questions[indexPath.row]
+        cell.textLabel?.textColor = themeTextColor
         cell.backgroundView = nil
-        cell.contentView.backgroundColor = UIColor.backgroundViewController
+        cell.contentView.backgroundColor = themeBackgroundColor
         return cell
     }
 

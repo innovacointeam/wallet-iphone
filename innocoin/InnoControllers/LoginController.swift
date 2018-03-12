@@ -23,6 +23,7 @@ class LoginController {
                 do {
                     let questionsList = try JSONDecoder().decode(QuestionListResponse.self, from: data)
                     self.questions = questionsList.result.questions
+                    debugPrint("QuestionsList count \(questionsList.result.questions.count)")
                 } catch let error as NSError {
                     debugPrint("Encodable error \(error.localizedFailureReason ?? error.localizedDescription)")
                 }
@@ -35,15 +36,6 @@ class LoginController {
     func reloadQuestionsIfNeed() {
         if questions.count == 0 {
             getQuestions()
-        }
-    }
-    
-    func resetPassword(email: String, completion: @escaping (Bool)->()) {
-        // TODO: - Implementing REST API to send request reset password
-        // Imitation URLSession request
-        DispatchQueue(label: "Logincontroller").async {
-            sleep(2)
-            completion(true)
         }
     }
     

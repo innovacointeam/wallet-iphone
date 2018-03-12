@@ -29,7 +29,7 @@ class RESTController: NSObject {
     func getQuestions(completion: @escaping (ServerResponse)->()) {
         var request = URLRequest(url: RestApi.questionsList.url)
         request.httpMethod = RestApi.questionsList.method
-        request.timeoutInterval = 10
+        request.timeoutInterval = 60
         
         let task = session.dataTask(with: request) { data, response, error in
             guard error == nil,
@@ -38,10 +38,30 @@ class RESTController: NSObject {
                     completion(.error(reason: error?.localizedDescription, code: 0))
                 return
             }
-            
+            debugPrint("Get question list from server")
             completion(.success(data: data, code: httpResponse.statusCode))
         }
         task.resume()
+    }
+    
+    func resetPassword(email: String, question: String, answer: String, completion: @escaping (ServerResponse)->()) {
+        let rest = RestApi.resetPassword(email: email, question: question, answer: answer)
+        send(rest, completion: completion)
+    }
+    
+    func resetPincode(question: String, answer: String, completion: @escaping (ServerResponse)->()) {
+        let rest = RestApi.resetPincode(question: question, answer: answer)
+        send(rest, completion: completion)
+    }
+    
+    func changePassword(pincode: String, password: String, newPassword: String, completion: @escaping (ServerResponse)->()) {
+        let rest = RestApi.changePassword(pincode: pincode, password: password, newPassword: newPassword)
+        send(rest, completion: completion)
+    }
+    
+    func changePincode(password: String, pincode: String, newPincode: String, completion: @escaping (ServerResponse)->()) {
+        let rest = RestApi.changePincode(password: password, pincode: pincode, newPincode: newPincode)
+        send(rest, completion: completion)
     }
     
     func signin(email: String, password: String, completion: @escaping (ServerResponse)->()) {

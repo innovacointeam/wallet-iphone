@@ -13,6 +13,7 @@ class SendViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var receiverField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
+    @IBOutlet weak var qrCodeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,4 +29,26 @@ class SendViewController: UIViewController {
         }
         mainTabBar.openMenu()
     }
+    
+    @IBAction func qrCodeTapped(_ sender: Any) {
+        let qrController = storyboard!.instantiateViewController(withIdentifier: "QRScannerViewController") as! QRScannerViewController
+        qrController.delegate = self
+        present(qrController, animated: true, completion: nil)
+    }
+    
+}
+
+extension SendViewController: QRScannerViewControllerDelegate {
+    
+    func didFail(reason: String) {
+        showAlert(reason, title: "QRCode scanning")
+    }
+    
+    func didFinish(code: String?) {
+        guard let code = code else {
+            return
+        }
+        receiverField.text = code
+    }
+    
 }

@@ -31,9 +31,13 @@ extension UIColor {
     static let placeholderTextColor = UIColor(sRed: 137 / 255, green: 143 / 255, blue: 188 / 255, alpha: 1.0)
     static let underlineTextField = UIColor(sRed: 53 / 255, green: 57 / 255, blue: 120 / 255, alpha: 1.0)
     static let errorMessage = UIColor(sRed: 255 / 255, green: 45 / 255, blue: 85 / 255, alpha: 1.0)
+
     static let settingsTableSectionHeader = UIColor(sRed: 55 / 255, green: 181 / 255, blue: 241 / 255, alpha: 1.0)
     static let settingsTintColor = UIColor(sRed: 0, green: 6 / 255, blue: 98 / 255, alpha: 1.0)
     static let settingsAccessuaryTintColor = UIColor(sRed: 125 / 255, green: 131 / 255, blue: 181 / 255, alpha: 1.0)
     static let textColor = UIColor(sRed: 0, green: 6 / 255, blue: 98 / 255, alpha: 1.0)
     static let buttonBorderColor = UIColor(sRed: 0, green: 6 / 255, blue: 98 / 255, alpha: 1.0)
+    
+    static let viewControllerLigthBackground = UIColor(sRed: 245 / 255, green: 247 / 255, blue: 250 / 255, alpha: 1.0)
+    static let deleteButtonBackgound = UIColor(sRed: 255 / 255, green: 45 / 255, blue: 85 / 255, alpha: 1.0)
 }

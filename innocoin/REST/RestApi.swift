@@ -8,7 +8,7 @@
 
 import Foundation
 
-let defaultTimeoutInterval: TimeInterval = 10
+let defaultTimeoutInterval: TimeInterval = 60
 let innoHost = URL(string: "http://159.89.109.174/api/v1.0")!
 
 enum RestApi {
@@ -18,16 +18,25 @@ enum RestApi {
     case signup(user: SignUpUser)
     case verifyToken(email: String)
     case profile(id: String)
+    case changePassword(pincode: String, password: String, newPassword: String)
+    case changePincode(password: String, pincode: String, newPincode: String)
+    case resetPassword(email: String, question: String, answer: String)
+    case resetPincode(question: String, answer: String)
     
-    var method: String {
+    var method: String	 {
         switch self {
         case .questionsList,
              .profile:
             return "GET"
         case .signin,
              .signup,
+             .resetPassword,
+             .resetPincode,
              .verifyToken:
             return "POST"
+        case .changePincode,
+             .changePassword:
+            return "PUT"
         }
     }
     
@@ -39,10 +48,18 @@ enum RestApi {
             return "signup"
         case .signin:
             return "login"
+        case .resetPassword:
+            return "users/profile/password_recovery"
+        case .resetPincode:
+            return  "users/profile/pincode_recovery"
         case .verifyToken:
             return "signup/verifytoken/send"
         case .profile(let id):
             return "users/\(id)"
+        case .changePassword:
+            return "users/profile/password"
+        case .changePincode:
+            return "users/profile/pincode"
         }
     }
     
@@ -61,9 +78,40 @@ enum RestApi {
                 "password": password
             ]
             return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        case .resetPassword(let email, let question, let answer):
+            let json = [
+                "email": email,
+                "security_question": [
+                    "question": question,
+                    "answer": answer
+                    ] as [String : Any]
+            ] as [String: Any]
+            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        case .resetPincode(let question, let answer):
+            let json = [
+                "security_question": [
+                    "question": question,
+                    "answer": answer
+                    ] as [String : Any]
+            ] as [String: Any]
+            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         case .verifyToken(let email):
             let json = [
                 "email": email
+            ]
+            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        case .changePassword(let pincode, let password, let newPassword):
+            let json = [
+                "current_password": password,
+                "pincode": pincode,
+                "new_password": newPassword
+            ]
+            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        case .changePincode(let password, let pincode, let newPincode):
+            let json = [
+                "current_pincode": pincode,
+                "new_pincode": newPincode,
+                "password": password
             ]
             return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         default:
@@ -87,7 +135,13 @@ enum RestApi {
     var urlRequest: URLRequest {
         var request = URLRequest(url: self.url)
         request.timeoutInterval = defaultTimeoutInterval
-        request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
+        if self.method != "GET" {
+            request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
+            if let token = UserController.shared.token {
+                let bearer = "Bearer \(token)"
+                request.setValue(bearer, forHTTPHeaderField: "Authorization")
+            }
+        }
         request.httpMethod = self.method
         request.httpBody = self.param
         return request
@@ -104,10 +158,18 @@ extension RestApi: CustomDebugStringConvertible, CustomStringConvertible {
             return "Login to server"
         case .signup:
             return "SignUp new user"
+        case .resetPassword:
+            return "Request to reset password"
+        case .resetPincode:
+            return "Request to reset pincode"
         case .verifyToken:
             return "Verify login token"
         case .profile:
             return "Request user profile"
+        case .changePassword:
+            return "Try to change password"
+        case .changePincode:
+            return "Try to change pincode"
         }
     }
     

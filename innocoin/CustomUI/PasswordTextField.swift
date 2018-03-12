@@ -35,6 +35,7 @@ class PasswordTextField: UITextField {
         didSet {
             let icon = passwordShow ? openIcon : closeIcon
             (rightView as? UIButton)?.setImage(icon, for: .normal)
+            isSecureTextEntry = !passwordShow
         }
     }
     
@@ -88,6 +89,5 @@ class PasswordTextField: UITextField {
     
     @objc private func showPassword(_ sender: Any) {
         passwordShow = !passwordShow
-        isSecureTextEntry = !passwordShow
     }
 }

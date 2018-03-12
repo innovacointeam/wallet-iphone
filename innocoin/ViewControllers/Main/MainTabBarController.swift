@@ -35,8 +35,15 @@ class MainTabBarController: UITabBarController {
         guard let navVC = selectedViewController as? UINavigationController else {
             return
         }
-        
+        navVC.visibleViewController?.navigationItem.title = ""
         navVC.pushViewController(controller, animated: animated)
+    }
+    
+    func pop(_ animated: Bool = true) {
+        guard let navVC = selectedViewController as? UINavigationController else {
+            return
+        }
+        navVC.popViewController(animated: animated)
     }
     
     func hideMenu() {

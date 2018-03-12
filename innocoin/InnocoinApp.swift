@@ -25,6 +25,8 @@ class InnocoinApp: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UIApplication.shared.statusBarStyle = .lightContent
         
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.clear
+        
         // Request question List from server
         LoginController.shared.getQuestions()
         

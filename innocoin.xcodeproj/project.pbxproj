@@ -12,6 +12,8 @@
 		DA0429502042E81400642843 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04294F2042E81400642843 /* TransactionTableViewController.swift */; };
 		DA0429522042E91600642843 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0429512042E91600642843 /* ReceiveViewController.swift */; };
 		DA1663F42045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1663F32045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift */; };
+		DA22D9FA2053DC6800702B3C /* ResetPincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA22D9F82053DC6800702B3C /* ResetPincodeViewController.swift */; };
+		DA22D9FB2053DC6800702B3C /* ResetPincodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA22D9F92053DC6800702B3C /* ResetPincodeViewController.xib */; };
 		DA29A3562042A354002F7BB0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29A3552042A354002F7BB0 /* MainTabBarController.swift */; };
 		DA29A3592042BB47002F7BB0 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29A3582042BB47002F7BB0 /* MenuTableViewController.swift */; };
 		DA2A50142044682F0091723F /* TransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A50132044682F0091723F /* TransactionsController.swift */; };
@@ -32,6 +34,14 @@
 		DA39335F203EFE620079750C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA39335E203EFE620079750C /* LoginController.swift */; };
 		DA393361203F0F4C0079750C /* ResetPasswordFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */; };
 		DA4C3A9020453D75007BFC3A /* SignupViewController+PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */; };
+		DA58AB5F204E77ED0038A13E /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB5E204E77ED0038A13E /* AddContactViewController.swift */; };
+		DA58AB62204E7B8E0038A13E /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB61204E7B8E0038A13E /* QRScannerViewController.swift */; };
+		DA58AB64204E8F590038A13E /* Strings+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB63204E8F590038A13E /* Strings+extension.swift */; };
+		DA5C025720514B69003223BD /* DataManager+Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C025620514B69003223BD /* DataManager+Contact.swift */; };
+		DA5C0259205156D2003223BD /* RouterViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C0258205156D2003223BD /* RouterViewControllers.swift */; };
+		DA5C0260205158E3003223BD /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C025F205158E3003223BD /* UIStoryboard+Extension.swift */; };
+		DA5C026320515D53003223BD /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C026220515D53003223BD /* ContactsTableViewController.swift */; };
+		DA5C0265205171BE003223BD /* PreviewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C0264205171BE003223BD /* PreviewContactViewController.swift */; };
 		DA5DE6682044A2CC00E8951E /* EmptyTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6672044A2CC00E8951E /* EmptyTransactionViewController.swift */; };
 		DA5DE66B2044A7EF00E8951E /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE66A2044A7EF00E8951E /* RestApi.swift */; };
 		DA5DE66D2044AA2900E8951E /* RESTController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE66C2044AA2900E8951E /* RESTController.swift */; };
@@ -39,6 +49,8 @@
 		DA5DE6712044B3AA00E8951E /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6702044B3AA00E8951E /* QuestionsList.swift */; };
 		DA5DE6732044C58000E8951E /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6722044C58000E8951E /* NumberButton.swift */; };
 		DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6742044C8A500E8951E /* PincodeViewController.swift */; };
+		DA98F75F20512BF300FBA8A9 /* innova.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA98F75D20512BF300FBA8A9 /* innova.xcdatamodeld */; };
+		DA98F76120512D5B00FBA8A9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98F76020512D5B00FBA8A9 /* DataManager.swift */; };
 		DAA29EC5203E92E600308D9D /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29EC4203E92E600308D9D /* UIButton+extension.swift */; };
 		DAA29EC8203EA79C00308D9D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29EC7203EA79C00308D9D /* SignInViewController.swift */; };
 		DAA29ECA203EA93700308D9D /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29EC9203EA93700308D9D /* UIViewController+extension.swift */; };
@@ -51,14 +63,19 @@
 		DABBF7C12046C3B20053C09D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7C02046C3B20053C09D /* UserController.swift */; };
 		DABBF7C32046C9CA0053C09D /* SignInResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7C22046C9CA0053C09D /* SignInResult.swift */; };
 		DABD9F5B20403FA800494BC1 /* QuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */; };
+		DAC8ECC92056776400B9AF76 /* MessageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ECC82056776400B9AF76 /* MessageResult.swift */; };
 		DAD7A5202046FF26007DE09C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7A51F2046FF26007DE09C /* SettingsTableViewController.swift */; };
 		DADA09F02047E68A00A9A86A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA09EF2047E68A00A9A86A /* AlertViewController.swift */; };
+		DADE300D20528AA500F30976 /* ChangePasswordControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */; };
+		DADE300F20528FD700F30976 /* ChangePasswordViewController+Pincode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */; };
 		DAF0B2FB203DB5D30061000F /* InnocoinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */; };
 		DAF0B300203DB5D30061000F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0B2FE203DB5D30061000F /* Main.storyboard */; };
 		DAF0B302203DB5D30061000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF0B301203DB5D30061000F /* Assets.xcassets */; };
 		DAF0B305203DB5D30061000F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0B303203DB5D30061000F /* LaunchScreen.storyboard */; };
 		DAF0B30F203DC3A30061000F /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0B30E203DC3A30061000F /* UIView+extension.swift */; };
 		DAF0B311203DC3EC0061000F /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0B310203DC3EC0061000F /* UIColor+extension.swift */; };
+		DAF7E66E2052758200D96511 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF7E66D2052758200D96511 /* ContactTableViewCell.swift */; };
+		DAF7E67020527F7D00D96511 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF7E66F20527F7D00D96511 /* ChangePasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +84,8 @@
 		DA04294F2042E81400642843 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		DA0429512042E91600642843 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		DA1663F32045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewcontroller+QuestionTableView.swift"; sourceTree = "<group>"; };
+		DA22D9F82053DC6800702B3C /* ResetPincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPincodeViewController.swift; sourceTree = "<group>"; };
+		DA22D9F92053DC6800702B3C /* ResetPincodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPincodeViewController.xib; sourceTree = "<group>"; };
 		DA29A3552042A354002F7BB0 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DA29A3582042BB47002F7BB0 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		DA2A50132044682F0091723F /* TransactionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsController.swift; sourceTree = "<group>"; };
@@ -87,6 +106,14 @@
 		DA39335E203EFE620079750C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordFinishViewController.swift; sourceTree = "<group>"; };
 		DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupViewController+PincodeViewController.swift"; sourceTree = "<group>"; };
+		DA58AB5E204E77ED0038A13E /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		DA58AB61204E7B8E0038A13E /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		DA58AB63204E8F590038A13E /* Strings+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+extension.swift"; sourceTree = "<group>"; };
+		DA5C025620514B69003223BD /* DataManager+Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Contact.swift"; sourceTree = "<group>"; };
+		DA5C0258205156D2003223BD /* RouterViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterViewControllers.swift; sourceTree = "<group>"; };
+		DA5C025F205158E3003223BD /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		DA5C026220515D53003223BD /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		DA5C0264205171BE003223BD /* PreviewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContactViewController.swift; sourceTree = "<group>"; };
 		DA5DE6672044A2CC00E8951E /* EmptyTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransactionViewController.swift; sourceTree = "<group>"; };
 		DA5DE66A2044A7EF00E8951E /* RestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApi.swift; sourceTree = "<group>"; };
 		DA5DE66C2044AA2900E8951E /* RESTController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTController.swift; sourceTree = "<group>"; };
@@ -94,6 +121,8 @@
 		DA5DE6702044B3AA00E8951E /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
 		DA5DE6722044C58000E8951E /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		DA5DE6742044C8A500E8951E /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
+		DA98F75E20512BF300FBA8A9 /* innova.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = innova.xcdatamodel; sourceTree = "<group>"; };
+		DA98F76020512D5B00FBA8A9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DAA29EC4203E92E600308D9D /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		DAA29EC7203EA79C00308D9D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DAA29EC9203EA93700308D9D /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
@@ -106,8 +135,11 @@
 		DABBF7C02046C3B20053C09D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DABBF7C22046C9CA0053C09D /* SignInResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResult.swift; sourceTree = "<group>"; };
 		DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewController.swift; sourceTree = "<group>"; };
+		DAC8ECC82056776400B9AF76 /* MessageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResult.swift; sourceTree = "<group>"; };
 		DAD7A51F2046FF26007DE09C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DADA09EF2047E68A00A9A86A /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordControllerType.swift; sourceTree = "<group>"; };
+		DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController+Pincode.swift"; sourceTree = "<group>"; };
 		DAF0B2F7203DB5D30061000F /* innocoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = innocoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnocoinApp.swift; sourceTree = "<group>"; };
 		DAF0B2FF203DB5D30061000F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +149,8 @@
 		DAF0B30C203DB99E0061000F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DAF0B30E203DC3A30061000F /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		DAF0B310203DC3EC0061000F /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		DAF7E66D2052758200D96511 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		DAF7E66F20527F7D00D96511 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +164,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA22D9F72053DC4200702B3C /* SecuritySettings */ = {
+			isa = PBXGroup;
+			children = (
+				DAF7E66F20527F7D00D96511 /* ChangePasswordViewController.swift */,
+				DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */,
+				DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */,
+				DA22D9F82053DC6800702B3C /* ResetPincodeViewController.swift */,
+				DA22D9F92053DC6800702B3C /* ResetPincodeViewController.xib */,
+			);
+			path = SecuritySettings;
+			sourceTree = "<group>";
+		};
 		DA29A3532042A31A002F7BB0 /* Login&Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +211,8 @@
 			children = (
 				DA29A3582042BB47002F7BB0 /* MenuTableViewController.swift */,
 				DAD7A51F2046FF26007DE09C /* SettingsTableViewController.swift */,
-				DAB40FED2049B117001FC147 /* AddressbookEmptyViewController.swift */,
+				DA22D9F72053DC4200702B3C /* SecuritySettings */,
+				DA5C026120515D2C003223BD /* AddressBook */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -215,6 +262,34 @@
 			path = InnoControllers;
 			sourceTree = "<group>";
 		};
+		DA58AB60204E7B720038A13E /* QRScanner */ = {
+			isa = PBXGroup;
+			children = (
+				DA58AB61204E7B8E0038A13E /* QRScannerViewController.swift */,
+			);
+			path = QRScanner;
+			sourceTree = "<group>";
+		};
+		DA5C025C205157D2003223BD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				DA5C0258205156D2003223BD /* RouterViewControllers.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		DA5C026120515D2C003223BD /* AddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				DAB40FED2049B117001FC147 /* AddressbookEmptyViewController.swift */,
+				DA58AB5E204E77ED0038A13E /* AddContactViewController.swift */,
+				DA5C026220515D53003223BD /* ContactsTableViewController.swift */,
+				DA5C0264205171BE003223BD /* PreviewContactViewController.swift */,
+				DAF7E66D2052758200D96511 /* ContactTableViewCell.swift */,
+			);
+			path = AddressBook;
+			sourceTree = "<group>";
+		};
 		DA5DE6692044A7D100E8951E /* REST */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +298,7 @@
 				DA5DE6702044B3AA00E8951E /* QuestionsList.swift */,
 				DABBF7BC2046BDF80053C09D /* SignUpResult.swift */,
 				DABBF7C22046C9CA0053C09D /* SignInResult.swift */,
+				DAC8ECC82056776400B9AF76 /* MessageResult.swift */,
 				DABBF7B8204692CC0053C09D /* SignUpUser.swift */,
 				DABBF7BA204694260053C09D /* AccountStatus.swift */,
 				DABBF7BE2046BE660053C09D /* UserProfile.swift */,
@@ -230,13 +306,25 @@
 			path = REST;
 			sourceTree = "<group>";
 		};
+		DA98F75C20512BD700FBA8A9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DA98F75D20512BF300FBA8A9 /* innova.xcdatamodeld */,
+				DA98F76020512D5B00FBA8A9 /* DataManager.swift */,
+				DA5C025620514B69003223BD /* DataManager+Contact.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		DAA29EC6203EA77100308D9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DA58AB60204E7B720038A13E /* QRScanner */,
 				DADA09EE2047E66A00A9A86A /* Support */,
 				DA29A3572042BB27002F7BB0 /* Menu */,
 				DA29A3542042A327002F7BB0 /* Main */,
 				DA29A3532042A31A002F7BB0 /* Login&Register */,
+				DA5C025C205157D2003223BD /* Router */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -269,6 +357,7 @@
 		DAF0B2F9203DB5D30061000F /* innocoin */ = {
 			isa = PBXGroup;
 			children = (
+				DA98F75C20512BD700FBA8A9 /* CoreData */,
 				DA5DE6692044A7D100E8951E /* REST */,
 				DA39335D203EFE440079750C /* InnoControllers */,
 				DA393343203EBD710079750C /* Resources */,
@@ -291,6 +380,8 @@
 				DAA29EC4203E92E600308D9D /* UIButton+extension.swift */,
 				DAA29EC9203EA93700308D9D /* UIViewController+extension.swift */,
 				DA393357203EC1380079750C /* UITextField+extension.swift */,
+				DA58AB63204E8F590038A13E /* Strings+extension.swift */,
+				DA5C025F205158E3003223BD /* UIStoryboard+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -357,6 +448,7 @@
 				DA393351203EBD9F0079750C /* Montserrat-ExtraBold.otf in Resources */,
 				DAF0B305203DB5D30061000F /* LaunchScreen.storyboard in Resources */,
 				DAF0B302203DB5D30061000F /* Assets.xcassets in Resources */,
+				DA22D9FB2053DC6800702B3C /* ResetPincodeViewController.xib in Resources */,
 				DA393353203EBD9F0079750C /* Montserrat-Regular.otf in Resources */,
 				DA393350203EBD9F0079750C /* Montserrat-UltraLight.otf in Resources */,
 				DAF0B300203DB5D30061000F /* Main.storyboard in Resources */,
@@ -375,16 +467,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF7E66E2052758200D96511 /* ContactTableViewCell.swift in Sources */,
 				DA39335A203ED27E0079750C /* SignUpViewController.swift in Sources */,
 				DABBF7B9204692CC0053C09D /* SignUpUser.swift in Sources */,
 				DAB40FEE2049B117001FC147 /* AddressbookEmptyViewController.swift in Sources */,
+				DAC8ECC92056776400B9AF76 /* MessageResult.swift in Sources */,
 				DABBF7BF2046BE660053C09D /* UserProfile.swift in Sources */,
 				DABD9F5B20403FA800494BC1 /* QuestionsTableViewController.swift in Sources */,
+				DA98F76120512D5B00FBA8A9 /* DataManager.swift in Sources */,
 				DA04294C2042C83000642843 /* SendViewController.swift in Sources */,
 				DABBF7C32046C9CA0053C09D /* SignInResult.swift in Sources */,
+				DA58AB62204E7B8E0038A13E /* QRScannerViewController.swift in Sources */,
 				DA5DE66F2044AB0800E8951E /* ServerResponse.swift in Sources */,
+				DA98F75F20512BF300FBA8A9 /* innova.xcdatamodeld in Sources */,
+				DADE300D20528AA500F30976 /* ChangePasswordControllerType.swift in Sources */,
 				DA393342203EB8D90079750C /* EmailTextField.swift in Sources */,
+				DA22D9FA2053DC6800702B3C /* ResetPincodeViewController.swift in Sources */,
+				DA58AB5F204E77ED0038A13E /* AddContactViewController.swift in Sources */,
 				DA5DE6682044A2CC00E8951E /* EmptyTransactionViewController.swift in Sources */,
+				DA58AB64204E8F590038A13E /* Strings+extension.swift in Sources */,
 				DA2A50142044682F0091723F /* TransactionsController.swift in Sources */,
 				DA0429522042E91600642843 /* ReceiveViewController.swift in Sources */,
 				DA0429502042E81400642843 /* TransactionTableViewController.swift in Sources */,
@@ -393,6 +494,7 @@
 				DAF0B30F203DC3A30061000F /* UIView+extension.swift in Sources */,
 				DA4C3A9020453D75007BFC3A /* SignupViewController+PincodeViewController.swift in Sources */,
 				DAD7A5202046FF26007DE09C /* SettingsTableViewController.swift in Sources */,
+				DA5C0265205171BE003223BD /* PreviewContactViewController.swift in Sources */,
 				DA39335F203EFE620079750C /* LoginController.swift in Sources */,
 				DA1663F42045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift in Sources */,
 				DA39335C203ED7BA0079750C /* ResetPasswordViewController.swift in Sources */,
@@ -408,14 +510,20 @@
 				DA29A3562042A354002F7BB0 /* MainTabBarController.swift in Sources */,
 				DA29A3592042BB47002F7BB0 /* MenuTableViewController.swift in Sources */,
 				DA5DE6732044C58000E8951E /* NumberButton.swift in Sources */,
+				DAF7E67020527F7D00D96511 /* ChangePasswordViewController.swift in Sources */,
+				DA5C025720514B69003223BD /* DataManager+Contact.swift in Sources */,
 				DA393358203EC1380079750C /* UITextField+extension.swift in Sources */,
 				DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */,
+				DA5C0259205156D2003223BD /* RouterViewControllers.swift in Sources */,
+				DA5C026320515D53003223BD /* ContactsTableViewController.swift in Sources */,
 				DAF0B311203DC3EC0061000F /* UIColor+extension.swift in Sources */,
+				DA5C0260205158E3003223BD /* UIStoryboard+Extension.swift in Sources */,
 				DAA29EC8203EA79C00308D9D /* SignInViewController.swift in Sources */,
 				DAA29EC5203E92E600308D9D /* UIButton+extension.swift in Sources */,
 				DADA09F02047E68A00A9A86A /* AlertViewController.swift in Sources */,
 				DA39333F203EB3C90079750C /* LoginNavigationController.swift in Sources */,
 				DAB40FEC20498881001FC147 /* VerifyTokenViewController.swift in Sources */,
+				DADE300F20528FD700F30976 /* ChangePasswordViewController+Pincode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +712,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DA98F75D20512BF300FBA8A9 /* innova.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DA98F75E20512BF300FBA8A9 /* innova.xcdatamodel */,
+			);
+			currentVersion = DA98F75E20512BF300FBA8A9 /* innova.xcdatamodel */;
+			path = innova.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DAF0B2EF203DB5D30061000F /* Project object */;
 }
