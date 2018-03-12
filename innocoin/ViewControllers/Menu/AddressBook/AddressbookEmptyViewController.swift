@@ -24,6 +24,4 @@ class AddressbookEmptyViewController: UIViewController {
 
     @IBAction func addContactTapped(_ sender: Any) {
     }
-    
-    
 }
