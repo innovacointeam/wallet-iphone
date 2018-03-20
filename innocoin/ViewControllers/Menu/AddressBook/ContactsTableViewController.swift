@@ -25,9 +25,7 @@ class ContactsTableViewController: UITableViewController {
     }()
     
     private let emptyView = UIView()
-    
-    private let addButton = UIBarButtonItem(image: #imageLiteral(resourceName: "add"), style: .plain, target: self, action: #selector(addContact))
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,14 +38,13 @@ class ContactsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         navigationItem.title = "Address Book"
-        navigationItem.rightBarButtonItem = addButton
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add"), style: .plain, target: self, action: #selector(addContact))
         tableView.reloadData()
     }
 
     // MARK: - User action observer
     @objc private func addContact() {
-        
+        RouterViewControllers.shared.openAddContact()
     }
     
     // MARK: - Table view data source
@@ -66,7 +63,7 @@ class ContactsTableViewController: UITableViewController {
         } else {
             tableView.backgroundView = nil
             searchBar.isHidden = false
-            navigationItem.rightBarButtonItem = addButton
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add"), style: .plain, target: self, action: #selector(addContact))
             tabBarController?.tabBar.isHidden = false
         }
         return count
@@ -102,7 +99,7 @@ class ContactsTableViewController: UITableViewController {
             self?.present(alert, animated: true, completion: nil)
         }
         delete.image = #imageLiteral(resourceName: "trashIcon")
-        delete.backgroundColor = UIColor.deleteButtonBackgound
+        delete.backgroundColor = UIColor.redInnova
         return UISwipeActionsConfiguration(actions: [delete])
     }
 }

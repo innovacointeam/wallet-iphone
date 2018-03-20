@@ -56,7 +56,7 @@ class PreviewContactViewController: UIViewController {
     
     // MARK: - User actions
     @objc private func editContact() {
-        
+        RouterViewControllers.shared.edit(contact)
     }
     
     @IBAction func deleteContactTapped(_ sender: Any) {

@@ -11,12 +11,22 @@ import UIKit
 
 extension UIStoryboard {
     
+    static let main = UIStoryboard(name: "Main", bundle: nil)
+    
+    static var transactionDetailsViewController: TransactionDetailsViewController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: "TransactionDetailsViewController") as! TransactionDetailsViewController
+    }
+    
+    func loginViewController() -> LoginNavigationController {
+        return self.instantiateViewController(withIdentifier: "LoginNavigationController") as! LoginNavigationController
+    }
+    
     func addressBookEmptyViewController() -> AddressbookEmptyViewController  {
        return self.instantiateViewController(withIdentifier: "AddressbookEmptyViewController") as! AddressbookEmptyViewController
     }
     
-    func addContactViewController() -> AddContactViewController {
-        return self.instantiateViewController(withIdentifier: "AddContactViewController") as! AddContactViewController
+    func editContactViewController() -> EditContactViewController {
+        return self.instantiateViewController(withIdentifier: "EditContactViewController") as! EditContactViewController
     }
     
     func contactsTableViewController() -> ContactsTableViewController {

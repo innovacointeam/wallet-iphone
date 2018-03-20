@@ -20,30 +20,6 @@ class RouterViewControllers {
         mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         app = UIApplication.shared.delegate as? InnocoinApp
     }
-
-//    /// Close Add Contact View Controller.
-//    ///
-//    /// if views in navigation controller - pop it, else dismiss
-//    ///
-//    /// - Note: Check if has any contact in Database open - ContactsTableView elsewhere EmptyContactView
-//    /// - Parameter addContact: Current AddContactViewController
-//    func close(addContact: AddContactViewController)  {
-//        guard let navVC = addContact.navigationController else {
-//            addContact.dismiss(animated: false, completion: nil)
-//            return
-//        }
-//        navVC.popViewController(animated: false)
-//        if navVC.visibleViewController is AddressbookEmptyViewController {
-//            navVC.popViewController(animated: false)
-//        }
-//        navVC.visibleViewController?.navigationItem.title = ""
-//        let contacts = DataManager.shared.contacts()
-//        if contacts.count > 0 {
-//            navVC.pushViewController(mainStoryboard.contactsTableViewController(), animated: true)
-//        } else {
-//            navVC.pushViewController(mainStoryboard.addressBookEmptyViewController(), animated: true)
-//        }
-//    }
     
     func openResetPincode() {
         let controller = ResetPincodeViewController()
@@ -64,6 +40,17 @@ class RouterViewControllers {
     
     func openAddressBook() {
         app.mainTabBar?.push(mainStoryboard.contactsTableViewController(), animated: true)
+    }
+    
+    func openAddContact() {
+        app.mainTabBar?.push(mainStoryboard.editContactViewController(), animated: true)
+    }
+    
+    func edit(_ contact: Contact) {
+        let controller = mainStoryboard.editContactViewController()
+        controller.type = .editContact
+        controller.contact = contact
+        app.mainTabBar?.push(controller, animated: true)
     }
     
     func preview(contact: Contact) {

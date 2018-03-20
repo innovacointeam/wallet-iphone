@@ -11,6 +11,7 @@
 		DA04294E2042E7E300642843 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04294D2042E7E300642843 /* OverviewViewController.swift */; };
 		DA0429502042E81400642843 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04294F2042E81400642843 /* TransactionTableViewController.swift */; };
 		DA0429522042E91600642843 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0429512042E91600642843 /* ReceiveViewController.swift */; };
+		DA119BF4205D43E1009DBBBF /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA119BF3205D43E1009DBBBF /* TransactionDetailsViewController.swift */; };
 		DA1663F42045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1663F32045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift */; };
 		DA22D9FA2053DC6800702B3C /* ResetPincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA22D9F82053DC6800702B3C /* ResetPincodeViewController.swift */; };
 		DA22D9FB2053DC6800702B3C /* ResetPincodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA22D9F92053DC6800702B3C /* ResetPincodeViewController.xib */; };
@@ -34,7 +35,10 @@
 		DA39335F203EFE620079750C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA39335E203EFE620079750C /* LoginController.swift */; };
 		DA393361203F0F4C0079750C /* ResetPasswordFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */; };
 		DA4C3A9020453D75007BFC3A /* SignupViewController+PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */; };
-		DA58AB5F204E77ED0038A13E /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB5E204E77ED0038A13E /* AddContactViewController.swift */; };
+		DA56D760205C1E9A0004E7F6 /* InnovaTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56D75F205C1E9A0004E7F6 /* InnovaTransaction.swift */; };
+		DA56D762205C22C40004E7F6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56D761205C22C40004E7F6 /* Reachability.swift */; };
+		DA56D764205C24CB0004E7F6 /* UnixTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56D763205C24CB0004E7F6 /* UnixTimeInterval.swift */; };
+		DA58AB5F204E77ED0038A13E /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB5E204E77ED0038A13E /* EditContactViewController.swift */; };
 		DA58AB62204E7B8E0038A13E /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB61204E7B8E0038A13E /* QRScannerViewController.swift */; };
 		DA58AB64204E8F590038A13E /* Strings+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58AB63204E8F590038A13E /* Strings+extension.swift */; };
 		DA5C025720514B69003223BD /* DataManager+Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C025620514B69003223BD /* DataManager+Contact.swift */; };
@@ -49,13 +53,25 @@
 		DA5DE6712044B3AA00E8951E /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6702044B3AA00E8951E /* QuestionsList.swift */; };
 		DA5DE6732044C58000E8951E /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6722044C58000E8951E /* NumberButton.swift */; };
 		DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6742044C8A500E8951E /* PincodeViewController.swift */; };
+		DA81A7F0205BB3EA0042CD2F /* InnovaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81A7EF205BB3EA0042CD2F /* InnovaConstants.swift */; };
+		DA81A7F2205BB8250042CD2F /* UIImage+Innova.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81A7F1205BB8250042CD2F /* UIImage+Innova.swift */; };
 		DA98F75F20512BF300FBA8A9 /* innova.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA98F75D20512BF300FBA8A9 /* innova.xcdatamodeld */; };
 		DA98F76120512D5B00FBA8A9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98F76020512D5B00FBA8A9 /* DataManager.swift */; };
+		DA9BF9A8205D130F008760DC /* Transaction+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9A7205D130F008760DC /* Transaction+extension.swift */; };
+		DA9BF9AC205D1868008760DC /* InnovaTransactionsRestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AB205D1868008760DC /* InnovaTransactionsRestAPI.swift */; };
+		DA9BF9AE205D1C7E008760DC /* RESTController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AD205D1C7E008760DC /* RESTController+Transactions.swift */; };
+		DA9BF9B0205D1E31008760DC /* InnovaTransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */; };
+		DA9BF9B2205D1F21008760DC /* DataManager+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9B1205D1F20008760DC /* DataManager+Transactions.swift */; };
+		DA9BF9B5205D2740008760DC /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9B4205D2740008760DC /* TransactionTableViewCell.swift */; };
 		DAA29EC5203E92E600308D9D /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29EC4203E92E600308D9D /* UIButton+extension.swift */; };
 		DAA29EC8203EA79C00308D9D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29EC7203EA79C00308D9D /* SignInViewController.swift */; };
 		DAA29ECA203EA93700308D9D /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29EC9203EA93700308D9D /* UIViewController+extension.swift */; };
 		DAB40FEC20498881001FC147 /* VerifyTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB40FEB20498881001FC147 /* VerifyTokenViewController.swift */; };
 		DAB40FEE2049B117001FC147 /* AddressbookEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB40FED2049B117001FC147 /* AddressbookEmptyViewController.swift */; };
+		DABB8E7F205CFD0500619003 /* CryptoCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB8E7E205CFD0500619003 /* CryptoCurrency.swift */; };
+		DABB8E81205D036800619003 /* InnovaCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB8E80205D036800619003 /* InnovaCoin.swift */; };
+		DABB8E83205D0ADA00619003 /* RestApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB8E82205D0ADA00619003 /* RestApiProtocol.swift */; };
+		DABB8E86205D0D7700619003 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB8E85205D0D7700619003 /* Bitcoin.swift */; };
 		DABBF7B9204692CC0053C09D /* SignUpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7B8204692CC0053C09D /* SignUpUser.swift */; };
 		DABBF7BB204694260053C09D /* AccountStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7BA204694260053C09D /* AccountStatus.swift */; };
 		DABBF7BD2046BDF80053C09D /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7BC2046BDF80053C09D /* SignUpResult.swift */; };
@@ -63,11 +79,16 @@
 		DABBF7C12046C3B20053C09D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7C02046C3B20053C09D /* UserController.swift */; };
 		DABBF7C32046C9CA0053C09D /* SignInResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBF7C22046C9CA0053C09D /* SignInResult.swift */; };
 		DABD9F5B20403FA800494BC1 /* QuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */; };
+		DAC6A284205E3A6F00B6D95E /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A283205E3A6F00B6D95E /* DateFormatter+extension.swift */; };
+		DAC6A286205E40D000B6D95E /* MarketPriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A285205E40D000B6D95E /* MarketPriceController.swift */; };
 		DAC8ECC92056776400B9AF76 /* MessageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ECC82056776400B9AF76 /* MessageResult.swift */; };
+		DAC8ECCB205698CB00B9AF76 /* EditContactViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ECCA205698CB00B9AF76 /* EditContactViewControllerType.swift */; };
+		DACD7F9B2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACD7F9A2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift */; };
 		DAD7A5202046FF26007DE09C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7A51F2046FF26007DE09C /* SettingsTableViewController.swift */; };
 		DADA09F02047E68A00A9A86A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA09EF2047E68A00A9A86A /* AlertViewController.swift */; };
 		DADE300D20528AA500F30976 /* ChangePasswordControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */; };
 		DADE300F20528FD700F30976 /* ChangePasswordViewController+Pincode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */; };
+		DAE56FB92058030C00EDBB49 /* InnovaPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */; };
 		DAF0B2FB203DB5D30061000F /* InnocoinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */; };
 		DAF0B300203DB5D30061000F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0B2FE203DB5D30061000F /* Main.storyboard */; };
 		DAF0B302203DB5D30061000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF0B301203DB5D30061000F /* Assets.xcassets */; };
@@ -83,6 +104,7 @@
 		DA04294D2042E7E300642843 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		DA04294F2042E81400642843 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		DA0429512042E91600642843 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		DA119BF3205D43E1009DBBBF /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
 		DA1663F32045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewcontroller+QuestionTableView.swift"; sourceTree = "<group>"; };
 		DA22D9F82053DC6800702B3C /* ResetPincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPincodeViewController.swift; sourceTree = "<group>"; };
 		DA22D9F92053DC6800702B3C /* ResetPincodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPincodeViewController.xib; sourceTree = "<group>"; };
@@ -106,7 +128,10 @@
 		DA39335E203EFE620079750C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordFinishViewController.swift; sourceTree = "<group>"; };
 		DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupViewController+PincodeViewController.swift"; sourceTree = "<group>"; };
-		DA58AB5E204E77ED0038A13E /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		DA56D75F205C1E9A0004E7F6 /* InnovaTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaTransaction.swift; sourceTree = "<group>"; };
+		DA56D761205C22C40004E7F6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		DA56D763205C24CB0004E7F6 /* UnixTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTimeInterval.swift; sourceTree = "<group>"; };
+		DA58AB5E204E77ED0038A13E /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		DA58AB61204E7B8E0038A13E /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		DA58AB63204E8F590038A13E /* Strings+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+extension.swift"; sourceTree = "<group>"; };
 		DA5C025620514B69003223BD /* DataManager+Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Contact.swift"; sourceTree = "<group>"; };
@@ -121,13 +146,25 @@
 		DA5DE6702044B3AA00E8951E /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
 		DA5DE6722044C58000E8951E /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		DA5DE6742044C8A500E8951E /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
+		DA81A7EF205BB3EA0042CD2F /* InnovaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaConstants.swift; sourceTree = "<group>"; };
+		DA81A7F1205BB8250042CD2F /* UIImage+Innova.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Innova.swift"; sourceTree = "<group>"; };
 		DA98F75E20512BF300FBA8A9 /* innova.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = innova.xcdatamodel; sourceTree = "<group>"; };
 		DA98F76020512D5B00FBA8A9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DA9BF9A7205D130F008760DC /* Transaction+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+extension.swift"; sourceTree = "<group>"; };
+		DA9BF9AB205D1868008760DC /* InnovaTransactionsRestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaTransactionsRestAPI.swift; sourceTree = "<group>"; };
+		DA9BF9AD205D1C7E008760DC /* RESTController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RESTController+Transactions.swift"; sourceTree = "<group>"; };
+		DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaTransactionsResponse.swift; sourceTree = "<group>"; };
+		DA9BF9B1205D1F20008760DC /* DataManager+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Transactions.swift"; sourceTree = "<group>"; };
+		DA9BF9B4205D2740008760DC /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		DAA29EC4203E92E600308D9D /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		DAA29EC7203EA79C00308D9D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DAA29EC9203EA93700308D9D /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		DAB40FEB20498881001FC147 /* VerifyTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTokenViewController.swift; sourceTree = "<group>"; };
 		DAB40FED2049B117001FC147 /* AddressbookEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressbookEmptyViewController.swift; sourceTree = "<group>"; };
+		DABB8E7E205CFD0500619003 /* CryptoCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrency.swift; sourceTree = "<group>"; };
+		DABB8E80205D036800619003 /* InnovaCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaCoin.swift; sourceTree = "<group>"; };
+		DABB8E82205D0ADA00619003 /* RestApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiProtocol.swift; sourceTree = "<group>"; };
+		DABB8E85205D0D7700619003 /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
 		DABBF7B8204692CC0053C09D /* SignUpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUser.swift; sourceTree = "<group>"; };
 		DABBF7BA204694260053C09D /* AccountStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatus.swift; sourceTree = "<group>"; };
 		DABBF7BC2046BDF80053C09D /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -135,11 +172,16 @@
 		DABBF7C02046C3B20053C09D /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DABBF7C22046C9CA0053C09D /* SignInResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResult.swift; sourceTree = "<group>"; };
 		DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewController.swift; sourceTree = "<group>"; };
+		DAC6A283205E3A6F00B6D95E /* DateFormatter+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
+		DAC6A285205E40D000B6D95E /* MarketPriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPriceController.swift; sourceTree = "<group>"; };
 		DAC8ECC82056776400B9AF76 /* MessageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResult.swift; sourceTree = "<group>"; };
+		DAC8ECCA205698CB00B9AF76 /* EditContactViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewControllerType.swift; sourceTree = "<group>"; };
+		DACD7F9A2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+LinkLabel.swift"; sourceTree = "<group>"; };
 		DAD7A51F2046FF26007DE09C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DADA09EF2047E68A00A9A86A /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordControllerType.swift; sourceTree = "<group>"; };
 		DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController+Pincode.swift"; sourceTree = "<group>"; };
+		DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaPriceResponse.swift; sourceTree = "<group>"; };
 		DAF0B2F7203DB5D30061000F /* innocoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = innocoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnocoinApp.swift; sourceTree = "<group>"; };
 		DAF0B2FF203DB5D30061000F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -199,9 +241,8 @@
 				DA29A3552042A354002F7BB0 /* MainTabBarController.swift */,
 				DA04294B2042C83000642843 /* SendViewController.swift */,
 				DA04294D2042E7E300642843 /* OverviewViewController.swift */,
-				DA04294F2042E81400642843 /* TransactionTableViewController.swift */,
+				DA9BF9B3205D2714008760DC /* Transactions */,
 				DA0429512042E91600642843 /* ReceiveViewController.swift */,
-				DA5DE6672044A2CC00E8951E /* EmptyTransactionViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -257,7 +298,9 @@
 				DA39335E203EFE620079750C /* LoginController.swift */,
 				DA2A50132044682F0091723F /* TransactionsController.swift */,
 				DA5DE66C2044AA2900E8951E /* RESTController.swift */,
+				DA9BF9AD205D1C7E008760DC /* RESTController+Transactions.swift */,
 				DABBF7C02046C3B20053C09D /* UserController.swift */,
+				DAC6A285205E40D000B6D95E /* MarketPriceController.swift */,
 			);
 			path = InnoControllers;
 			sourceTree = "<group>";
@@ -282,10 +325,11 @@
 			isa = PBXGroup;
 			children = (
 				DAB40FED2049B117001FC147 /* AddressbookEmptyViewController.swift */,
-				DA58AB5E204E77ED0038A13E /* AddContactViewController.swift */,
+				DA58AB5E204E77ED0038A13E /* EditContactViewController.swift */,
 				DA5C026220515D53003223BD /* ContactsTableViewController.swift */,
 				DA5C0264205171BE003223BD /* PreviewContactViewController.swift */,
 				DAF7E66D2052758200D96511 /* ContactTableViewCell.swift */,
+				DAC8ECCA205698CB00B9AF76 /* EditContactViewControllerType.swift */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -293,6 +337,7 @@
 		DA5DE6692044A7D100E8951E /* REST */ = {
 			isa = PBXGroup;
 			children = (
+				DABB8E82205D0ADA00619003 /* RestApiProtocol.swift */,
 				DA5DE66A2044A7EF00E8951E /* RestApi.swift */,
 				DA5DE66E2044AB0800E8951E /* ServerResponse.swift */,
 				DA5DE6702044B3AA00E8951E /* QuestionsList.swift */,
@@ -302,18 +347,46 @@
 				DABBF7B8204692CC0053C09D /* SignUpUser.swift */,
 				DABBF7BA204694260053C09D /* AccountStatus.swift */,
 				DABBF7BE2046BE660053C09D /* UserProfile.swift */,
+				DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */,
+				DA56D75F205C1E9A0004E7F6 /* InnovaTransaction.swift */,
+				DA9BF9AB205D1868008760DC /* InnovaTransactionsRestAPI.swift */,
+				DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */,
 			);
 			path = REST;
+			sourceTree = "<group>";
+		};
+		DA81A7EE205BB3A80042CD2F /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */,
+				DAF0B306203DB5D30061000F /* Info.plist */,
+				DA81A7EF205BB3EA0042CD2F /* InnovaConstants.swift */,
+				DA56D761205C22C40004E7F6 /* Reachability.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		DA98F75C20512BD700FBA8A9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				DA98F75D20512BF300FBA8A9 /* innova.xcdatamodeld */,
+				DA9BF9A7205D130F008760DC /* Transaction+extension.swift */,
 				DA98F76020512D5B00FBA8A9 /* DataManager.swift */,
+				DA9BF9B1205D1F20008760DC /* DataManager+Transactions.swift */,
 				DA5C025620514B69003223BD /* DataManager+Contact.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		DA9BF9B3205D2714008760DC /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				DA04294F2042E81400642843 /* TransactionTableViewController.swift */,
+				DA5DE6672044A2CC00E8951E /* EmptyTransactionViewController.swift */,
+				DA9BF9B4205D2740008760DC /* TransactionTableViewCell.swift */,
+				DA119BF3205D43E1009DBBBF /* TransactionDetailsViewController.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		DAA29EC6203EA77100308D9D /* ViewControllers */ = {
@@ -327,6 +400,17 @@
 				DA5C025C205157D2003223BD /* Router */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DABB8E84205D0D3F00619003 /* CustomTypos */ = {
+			isa = PBXGroup;
+			children = (
+				DABB8E80205D036800619003 /* InnovaCoin.swift */,
+				DABB8E85205D0D7700619003 /* Bitcoin.swift */,
+				DABB8E7E205CFD0500619003 /* CryptoCurrency.swift */,
+				DA56D763205C24CB0004E7F6 /* UnixTimeInterval.swift */,
+			);
+			path = CustomTypos;
 			sourceTree = "<group>";
 		};
 		DADA09EE2047E66A00A9A86A /* Support */ = {
@@ -357,6 +441,8 @@
 		DAF0B2F9203DB5D30061000F /* innocoin */ = {
 			isa = PBXGroup;
 			children = (
+				DABB8E84205D0D3F00619003 /* CustomTypos */,
+				DA81A7EE205BB3A80042CD2F /* Support */,
 				DA98F75C20512BD700FBA8A9 /* CoreData */,
 				DA5DE6692044A7D100E8951E /* REST */,
 				DA39335D203EFE440079750C /* InnoControllers */,
@@ -364,10 +450,8 @@
 				DA393340203EB8C40079750C /* CustomUI */,
 				DAA29EC6203EA77100308D9D /* ViewControllers */,
 				DAF0B30D203DC3880061000F /* Helpers */,
-				DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */,
 				DAF0B2FE203DB5D30061000F /* Main.storyboard */,
 				DAF0B303203DB5D30061000F /* LaunchScreen.storyboard */,
-				DAF0B306203DB5D30061000F /* Info.plist */,
 			);
 			path = innocoin;
 			sourceTree = "<group>";
@@ -375,6 +459,7 @@
 		DAF0B30D203DC3880061000F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DAC6A283205E3A6F00B6D95E /* DateFormatter+extension.swift */,
 				DAF0B30E203DC3A30061000F /* UIView+extension.swift */,
 				DAF0B310203DC3EC0061000F /* UIColor+extension.swift */,
 				DAA29EC4203E92E600308D9D /* UIButton+extension.swift */,
@@ -382,6 +467,8 @@
 				DA393357203EC1380079750C /* UITextField+extension.swift */,
 				DA58AB63204E8F590038A13E /* Strings+extension.swift */,
 				DA5C025F205158E3003223BD /* UIStoryboard+Extension.swift */,
+				DACD7F9A2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift */,
+				DA81A7F1205BB8250042CD2F /* UIImage+Innova.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -471,9 +558,12 @@
 				DA39335A203ED27E0079750C /* SignUpViewController.swift in Sources */,
 				DABBF7B9204692CC0053C09D /* SignUpUser.swift in Sources */,
 				DAB40FEE2049B117001FC147 /* AddressbookEmptyViewController.swift in Sources */,
+				DA119BF4205D43E1009DBBBF /* TransactionDetailsViewController.swift in Sources */,
 				DAC8ECC92056776400B9AF76 /* MessageResult.swift in Sources */,
 				DABBF7BF2046BE660053C09D /* UserProfile.swift in Sources */,
+				DA9BF9AE205D1C7E008760DC /* RESTController+Transactions.swift in Sources */,
 				DABD9F5B20403FA800494BC1 /* QuestionsTableViewController.swift in Sources */,
+				DA9BF9B2205D1F21008760DC /* DataManager+Transactions.swift in Sources */,
 				DA98F76120512D5B00FBA8A9 /* DataManager.swift in Sources */,
 				DA04294C2042C83000642843 /* SendViewController.swift in Sources */,
 				DABBF7C32046C9CA0053C09D /* SignInResult.swift in Sources */,
@@ -481,16 +571,20 @@
 				DA5DE66F2044AB0800E8951E /* ServerResponse.swift in Sources */,
 				DA98F75F20512BF300FBA8A9 /* innova.xcdatamodeld in Sources */,
 				DADE300D20528AA500F30976 /* ChangePasswordControllerType.swift in Sources */,
+				DA9BF9B5205D2740008760DC /* TransactionTableViewCell.swift in Sources */,
 				DA393342203EB8D90079750C /* EmailTextField.swift in Sources */,
 				DA22D9FA2053DC6800702B3C /* ResetPincodeViewController.swift in Sources */,
-				DA58AB5F204E77ED0038A13E /* AddContactViewController.swift in Sources */,
+				DA58AB5F204E77ED0038A13E /* EditContactViewController.swift in Sources */,
 				DA5DE6682044A2CC00E8951E /* EmptyTransactionViewController.swift in Sources */,
+				DA9BF9AC205D1868008760DC /* InnovaTransactionsRestAPI.swift in Sources */,
 				DA58AB64204E8F590038A13E /* Strings+extension.swift in Sources */,
 				DA2A50142044682F0091723F /* TransactionsController.swift in Sources */,
 				DA0429522042E91600642843 /* ReceiveViewController.swift in Sources */,
 				DA0429502042E81400642843 /* TransactionTableViewController.swift in Sources */,
 				DA5DE66B2044A7EF00E8951E /* RestApi.swift in Sources */,
+				DAC6A284205E3A6F00B6D95E /* DateFormatter+extension.swift in Sources */,
 				DA5DE6712044B3AA00E8951E /* QuestionsList.swift in Sources */,
+				DA81A7F2205BB8250042CD2F /* UIImage+Innova.swift in Sources */,
 				DAF0B30F203DC3A30061000F /* UIView+extension.swift in Sources */,
 				DA4C3A9020453D75007BFC3A /* SignupViewController+PincodeViewController.swift in Sources */,
 				DAD7A5202046FF26007DE09C /* SettingsTableViewController.swift in Sources */,
@@ -500,29 +594,43 @@
 				DA39335C203ED7BA0079750C /* ResetPasswordViewController.swift in Sources */,
 				DABBF7C12046C3B20053C09D /* UserController.swift in Sources */,
 				DA04294E2042E7E300642843 /* OverviewViewController.swift in Sources */,
+				DAC8ECCB205698CB00B9AF76 /* EditContactViewControllerType.swift in Sources */,
 				DA5DE66D2044AA2900E8951E /* RESTController.swift in Sources */,
 				DA393356203EC1080079750C /* PasswordTextField.swift in Sources */,
+				DABB8E81205D036800619003 /* InnovaCoin.swift in Sources */,
 				DABBF7BB204694260053C09D /* AccountStatus.swift in Sources */,
 				DAF0B2FB203DB5D30061000F /* InnocoinApp.swift in Sources */,
 				DAA29ECA203EA93700308D9D /* UIViewController+extension.swift in Sources */,
 				DABBF7BD2046BDF80053C09D /* SignUpResult.swift in Sources */,
+				DACD7F9B2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift in Sources */,
 				DA393361203F0F4C0079750C /* ResetPasswordFinishViewController.swift in Sources */,
 				DA29A3562042A354002F7BB0 /* MainTabBarController.swift in Sources */,
 				DA29A3592042BB47002F7BB0 /* MenuTableViewController.swift in Sources */,
+				DA56D764205C24CB0004E7F6 /* UnixTimeInterval.swift in Sources */,
 				DA5DE6732044C58000E8951E /* NumberButton.swift in Sources */,
+				DA56D760205C1E9A0004E7F6 /* InnovaTransaction.swift in Sources */,
+				DAE56FB92058030C00EDBB49 /* InnovaPriceResponse.swift in Sources */,
 				DAF7E67020527F7D00D96511 /* ChangePasswordViewController.swift in Sources */,
 				DA5C025720514B69003223BD /* DataManager+Contact.swift in Sources */,
+				DA81A7F0205BB3EA0042CD2F /* InnovaConstants.swift in Sources */,
+				DA9BF9B0205D1E31008760DC /* InnovaTransactionsResponse.swift in Sources */,
 				DA393358203EC1380079750C /* UITextField+extension.swift in Sources */,
 				DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */,
 				DA5C0259205156D2003223BD /* RouterViewControllers.swift in Sources */,
+				DABB8E7F205CFD0500619003 /* CryptoCurrency.swift in Sources */,
 				DA5C026320515D53003223BD /* ContactsTableViewController.swift in Sources */,
 				DAF0B311203DC3EC0061000F /* UIColor+extension.swift in Sources */,
 				DA5C0260205158E3003223BD /* UIStoryboard+Extension.swift in Sources */,
 				DAA29EC8203EA79C00308D9D /* SignInViewController.swift in Sources */,
 				DAA29EC5203E92E600308D9D /* UIButton+extension.swift in Sources */,
+				DAC6A286205E40D000B6D95E /* MarketPriceController.swift in Sources */,
+				DA9BF9A8205D130F008760DC /* Transaction+extension.swift in Sources */,
 				DADA09F02047E68A00A9A86A /* AlertViewController.swift in Sources */,
+				DABB8E86205D0D7700619003 /* Bitcoin.swift in Sources */,
 				DA39333F203EB3C90079750C /* LoginNavigationController.swift in Sources */,
 				DAB40FEC20498881001FC147 /* VerifyTokenViewController.swift in Sources */,
+				DA56D762205C22C40004E7F6 /* Reachability.swift in Sources */,
+				DABB8E83205D0ADA00619003 /* RestApiProtocol.swift in Sources */,
 				DADE300F20528FD700F30976 /* ChangePasswordViewController+Pincode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99H4B4S3XZ;
-				INFOPLIST_FILE = innocoin/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/innocoin/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -679,7 +787,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99H4B4S3XZ;
-				INFOPLIST_FILE = innocoin/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/innocoin/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";

@@ -24,6 +24,22 @@ extension DataManager {
         completion?(true, nil)
     }
     
+    func save(_ contact: Contact?, completion: ((Bool, String?)->())? ) {
+        guard let contact = contact else {
+            completion?(false, "Cannot save empty contact")
+            return
+        }
+        guard !checkExist(contact) else {
+            completion?(false, "Contact with name \(contact.fullName ?? "Anonymous") or innova address \(contact.wallet ?? "unset") exist")
+            return
+        }
+        save()
+    }
+    
+    func checkExist(_ contact: Contact!) -> Bool {
+        return false
+    }
+    
     func checkContactExist(_ name: String, wallet: String) -> Bool {
         let request: NSFetchRequest<Contact> = Contact.fetchRequest()
         request.predicate = NSPredicate(format: "fullName == %@ OR wallet == %@", name, wallet)
