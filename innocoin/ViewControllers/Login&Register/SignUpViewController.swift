@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var answerField: UITextField!
     @IBOutlet weak var questionButton: UIButton!
     @IBOutlet weak var tempQuestionView: UIView!
+    @IBOutlet weak var termsLabel: UILabel!
     
     private var oldConstrait: CGFloat = 0
     private var questionFrame: CGRect = CGRect.zero
@@ -29,7 +30,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.backgroundViewController
-        sigUpButton.applyTheme()
+
         hideKeyboard()
         
         if let text = answerField.placeholder {
@@ -111,14 +112,18 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Try reload questions if not yet
         LoginController.shared.reloadQuestionsIfNeed()
-        
-        super.viewDidAppear(animated)
         oldConstrait = view.frame.origin.y
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        sigUpButton.applyTheme()
+    }
     
     //MARK: - Observe getKayboardHeight
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -154,10 +159,20 @@ class SignUpViewController: UIViewController {
         appearQuestionController()
     }
     
-    override func dismissKeyboard() {
-        super.dismissKeyboard()
-    
+    override func dismissKeyboard(_ gesture: UIGestureRecognizer) {
+        super.dismissKeyboard(gesture)
+        
         hideQuestionstableIfNeed()
+        
+        guard let text = termsLabel.text else {
+            return
+        }
+        let linkRange = (text as NSString).range(of: "Innova Wallet Terms of Service")
+        if gesture.didTapAttributedTextInLabel(label: termsLabel, inRange: linkRange) {
+            if UIApplication.shared.canOpenURL(InnovaConstanst.innovaTermsAndServiceLink) {
+                UIApplication.shared.open(InnovaConstanst.innovaTermsAndServiceLink)
+            }
+        }
     }
     
 

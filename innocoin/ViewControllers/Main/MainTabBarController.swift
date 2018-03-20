@@ -7,9 +7,7 @@
 //
 
 import UIKit
-
-// please check your email including your spam folder and follow instruction there to activate your account
-// support@innovacoin.info
+import MessageUI
 
 class MainTabBarController: UITabBarController {
 
@@ -19,6 +17,9 @@ class MainTabBarController: UITabBarController {
     private var widthConstrait: NSLayoutConstraint!
     private var leftConstrait: NSLayoutConstraint!
     private var tapOutside: UIGestureRecognizer!
+    
+    private var isAnimating = false
+    private let animationGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ class MainTabBarController: UITabBarController {
         leftConstrait.isActive = false
         leftConstrait.constant = -250
         leftConstrait.isActive = true
+        
         UIView.animate(withDuration: 0.3, animations: {
                 self.menuContainer.frame.origin.x = -250
                 self.blur?.alpha = 0
@@ -124,5 +126,69 @@ class MainTabBarController: UITabBarController {
     @objc private func tapOutside(_ sender: UITapGestureRecognizer) {
         hideMenu()
     }
+    
+    
+    func logout() {
+        showCustomAlert(title: "Are you sure that you want to leave the Innova Wallet?", message: "", action: "Logout", delegate: self)
+    }
+    
+    func shareInnova() {
+        let firstActivityItem = "Innova wallet"
+        let secondActivityItem = URL(string: "https://innovacoin.info")!
+        
+        var activities: [Any] = [firstActivityItem, secondActivityItem]
+        if let image = UIImage.appIcon {
+            activities.append(image)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: activities, applicationActivities: nil)
+        
+        if let popover = activityViewController.popoverPresentationController {
+            // This lines is for the popover you need to show in iPad
+            popover.sourceView = activityViewController.view
+            popover.permittedArrowDirections = .any
+            popover.sourceRect = activityViewController.view.frame
+        }
+        present(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension MainTabBarController: MFMailComposeViewControllerDelegate {
+    
+    func sendMailToSupport() {
+        guard  MFMailComposeViewController.canSendMail() else {
+            let message = """
+            Cannot send mail from this device.
+            Please use another way.
+            Support email: \(InnovaConstanst.supportEmail)
+            """
+            showAlert(message, title: "")
+            return
+        }
+        let mail = MFMailComposeViewController()
+        mail.mailComposeDelegate = self
+        mail.setToRecipients([InnovaConstanst.supportEmail])
+        mail.setSubject("Wallet ID: \(UserController.shared.wallet ?? UserController.shared.email), status: \(UserController.shared.status.rawValue)")
+        
+        self.present(mail, animated: true)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension MainTabBarController: AlertViewControllerDelegate {
+    
+    func didCancel() {
+        
+    }
+    
+    func didAction(_ name: String) {
+        UserController.shared.logout()
+        innovaApp?.setRoot(storyboard!.loginViewController(), options: .transitionFlipFromLeft)
+    }
+    
     
 }

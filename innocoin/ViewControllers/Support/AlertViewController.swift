@@ -23,6 +23,7 @@ class AlertViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var blur: UIView!
     
     var delegate: AlertViewControllerDelegate?
     var text: String?
@@ -47,6 +48,8 @@ class AlertViewController: UIViewController {
         // Update view
         titleLabel.text = title
         message.text = text
+        titleLabel.isHidden = title == nil
+        message.isHidden = text == nil
         actionButton.setTitle(action, for: .normal)
         actionButton.setTitleColor(UIColor.settingsTintColor, for: .normal)
         cancelButton.setTitleColor(UIColor.settingsTintColor, for: .normal)

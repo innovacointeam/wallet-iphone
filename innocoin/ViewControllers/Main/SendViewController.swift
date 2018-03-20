@@ -19,6 +19,10 @@ class SendViewController: UIViewController {
         super.viewDidLoad()
         receiverField.setPlaceholder(color: UIColor.placeholderTextColor)
         descriptionField.setPlaceholder(color: UIColor.placeholderTextColor)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         continueButton.applyTheme()
     }
     

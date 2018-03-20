@@ -14,7 +14,7 @@ enum ServerResponse: Equatable {
     case success(data: Data, code: Int)
     
     var isSuccess: Bool {
-        return self == ServerResponse.error(reason: "", code: 0)
+        return self == .error(reason: "", code: 0)
     }
     
     static func ==(lhs: ServerResponse, rhs: ServerResponse) -> Bool {

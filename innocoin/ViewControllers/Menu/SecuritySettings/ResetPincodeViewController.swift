@@ -37,8 +37,8 @@ class ResetPincodeViewController: UIViewController {
         return newView
     }()
     
-    override func dismissKeyboard() {
-        super.dismissKeyboard()
+    override func dismissKeyboard(_ gesture: UIGestureRecognizer) {
+        super.dismissKeyboard(gesture)
         hideQuestionstableIfNeed()
     }
     

@@ -18,4 +18,7 @@ class EmptyTransactionViewController: UIViewController {
         receivedInnovaButton.applyTheme()
     }
 
+    @IBAction func receiveButtonTapped(_ sender: Any) {
+        innovaApp?.mainTabBar?.selectedIndex = 3
+    }
 }

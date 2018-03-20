@@ -15,4 +15,20 @@ class UserController {
     var profile: UserProfile!
     var token: String!
     
+    var wallet: String? {
+        return profile.wallet
+    }
+    
+    var status: AccountStatus {
+        return profile.status
+    }
+    
+    var email: String {
+        return profile.email
+    }
+    
+    func logout() {
+        profile = nil
+        token = nil
+    }
 }

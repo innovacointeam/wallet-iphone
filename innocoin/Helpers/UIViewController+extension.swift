@@ -24,12 +24,12 @@ extension UIViewController {
     @discardableResult func hideKeyboard() -> UIGestureRecognizer {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
-            action: #selector(UIViewController.dismissKeyboard))
+            action: #selector(UIViewController.dismissKeyboard(_:)))
         view.addGestureRecognizer(tap)
         return tap
     }
     
-    @objc func dismissKeyboard()
+    @objc func dismissKeyboard(_ recognizer: UIGestureRecognizer)
     {
         view.endEditing(true)
     }
@@ -110,14 +110,17 @@ extension UIViewController {
         return loadingView
     }
     
-    @discardableResult func showCustomAlert(title: String, message: String, action: String, delegate: AlertViewControllerDelegate) -> AlertViewController {
+    @discardableResult func showCustomAlert(title: String?, message: String?, action: String, delegate: AlertViewControllerDelegate) -> AlertViewController {
         let controller = storyboard!.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
         controller.modalPresentationStyle = .overCurrentContext
         controller.title  = title
         controller.action = action
         controller.text = message
         controller.delegate = delegate
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true) {
+            controller.view.layoutIfNeeded()
+            self.view.layoutIfNeeded()
+        }
         return controller
     }
 }

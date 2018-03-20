@@ -99,8 +99,8 @@ class ResetPasswordViewController: UIViewController {
         questionFrame = frame
     }
     
-    override func dismissKeyboard() {
-        super.dismissKeyboard()
+    override func dismissKeyboard(_ gesture: UIGestureRecognizer) {
+        super.dismissKeyboard(gesture)
         
         hideQuestionstableIfNeed()
     }

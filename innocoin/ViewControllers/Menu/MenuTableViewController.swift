@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class MenuTableViewController: UITableViewController {
 
@@ -17,22 +18,32 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let app = UIApplication.shared.delegate as? InnocoinApp else {
-            fatalError("Failed to load InnocoinApp")
-        }
-        
-        app.mainTabBar?.hideMenu()
+        innovaApp?.mainTabBar?.hideMenu()
 
         switch indexPath.row {
+        // Address book
         case 0:
             RouterViewControllers.shared.openAddressBook()
             return
+        // Settings
         case 1:
             let controller = storyboard!.instantiateViewController(withIdentifier: "SettingsTableViewController")
-            app.mainTabBar?.push(controller, animated: false)
+            innovaApp?.mainTabBar?.push(controller, animated: false)
+        // Share App
+        case 2:
+           
+           innovaApp?.mainTabBar?.shareInnova()
+        // Write to Support
+        case 3:
+            innovaApp?.mainTabBar?.sendMailToSupport()
+        // Logout
+        case 4:
+            innovaApp?.mainTabBar?.logout()
         default:
            return
         }
     }
-
 }
+
+
+
