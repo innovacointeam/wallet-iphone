@@ -13,16 +13,18 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: EmailTextField!
     @IBOutlet weak var passwordField: PasswordTextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var termsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.backgroundViewController
         hideKeyboard()
-        signInButton.applyTheme()
+
         
         emailTextField.delegate = self
         passwordField.delegate = self
+        termsLabel.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,8 +32,27 @@ class SignInViewController: UIViewController {
         navigationItem.title = "Sign In"
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        signInButton.applyTheme()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = ""
+    }
+    
+    override func dismissKeyboard(_ recognizer: UIGestureRecognizer) {
+        super.dismissKeyboard(recognizer)
+        
+        guard let text = termsLabel.text else {
+            return
+        }
+        let linkRange = (text as NSString).range(of: "Innova Wallet Terms of Service")
+        if recognizer.didTapAttributedTextInLabel(label: termsLabel, inRange: linkRange) {
+            if UIApplication.shared.canOpenURL(InnovaConstanst.innovaTermsAndServiceLink) {
+                UIApplication.shared.open(InnovaConstanst.innovaTermsAndServiceLink)
+            }
+        }
     }
     
     // MARK:  Singin action
@@ -80,7 +101,7 @@ class SignInViewController: UIViewController {
                         app.setRoot(controllerName: "MainTabBarController")
                     }
                 } else {
-                    self?.showAlert(reason!)
+                    self?.showAlert(reason ?? "Unknown error")
                 }
             }
         }
