@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum AccountStatus: String {
     
@@ -16,4 +17,17 @@ enum AccountStatus: String {
      case blocked = "blocked"
     
      case unknown = "unknown"
+    
+    var color: UIColor {
+        switch self {
+        case .unknown,
+            .pending:
+            return UIColor.yellow
+        case .active:
+            return UIColor.green
+        case .locked,
+             .blocked:
+            return UIColor.red
+        }
+    }
 }

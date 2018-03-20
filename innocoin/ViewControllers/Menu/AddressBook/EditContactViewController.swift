@@ -8,12 +8,14 @@
 
 import UIKit
 
-class AddContactViewController: UIViewController {
+class EditContactViewController: UIViewController {
 
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var fullNameField: UITextField!
     @IBOutlet weak var innovaAddressField: UITextField!
     
+    var type: EditContactViewControllerType = .newContact
+    var contact: Contact?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,18 @@ class AddContactViewController: UIViewController {
         innovaAddressField.delegate = self
         fullNameField.textColor = UIColor.textColor
         innovaAddressField.textColor = UIColor.textColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        createButton.setTitle(type.buttonTitle, for: .normal)
+        navigationItem.title = type.title
+        
+        if type == .editContact {
+            fullNameField.text  = contact?.fullName
+            innovaAddressField.text = contact?.wallet
+        }
     }
   
     @IBAction func createContactTapped(_ sender: Any) {
@@ -45,14 +59,22 @@ class AddContactViewController: UIViewController {
             }
         #endif
 
-        
-        DataManager.shared.addContact(name, innovaAddress: wallet) { result, reason in
-            if !result {
-                self.showAlert(reason!, title: "Add Contact")
-            } else {
-                RouterViewControllers.shared.pop()
+        switch type {
+        case .newContact:
+            DataManager.shared.addContact(name, innovaAddress: wallet) { [weak self] result, reason in
+                if !result {
+                    self?.showAlert(reason!, title: self?.type.title ?? "Error")
+                } else {
+                    RouterViewControllers.shared.pop()
+                }
             }
+        case .editContact:
+            contact?.fullName = name
+            contact?.wallet = wallet
+            DataManager.shared.save()
+            RouterViewControllers.shared.pop()
         }
+
     }
     
     
@@ -63,7 +85,7 @@ class AddContactViewController: UIViewController {
     }
 }
 
-extension AddContactViewController: UITextFieldDelegate {
+extension EditContactViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -77,7 +99,7 @@ extension AddContactViewController: UITextFieldDelegate {
 }
 
 
-extension AddContactViewController: QRScannerViewControllerDelegate {
+extension EditContactViewController: QRScannerViewControllerDelegate {
     
     func didFail(reason: String) {
         showAlert(reason, title: "QRCode scanning")

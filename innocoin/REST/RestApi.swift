@@ -8,9 +8,6 @@
 
 import Foundation
 
-let defaultTimeoutInterval: TimeInterval = 60
-let innoHost = URL(string: "http://159.89.109.174/api/v1.0")!
-
 enum RestApi {
     
     case questionsList
@@ -22,10 +19,14 @@ enum RestApi {
     case changePincode(password: String, pincode: String, newPincode: String)
     case resetPassword(email: String, question: String, answer: String)
     case resetPincode(question: String, answer: String)
+    case setAnonymous
+    case setPublic
+    case price
     
     var method: String	 {
         switch self {
         case .questionsList,
+             .price,
              .profile:
             return "GET"
         case .signin,
@@ -35,6 +36,8 @@ enum RestApi {
              .verifyToken:
             return "POST"
         case .changePincode,
+             .setPublic,
+             .setAnonymous,
              .changePassword:
             return "PUT"
         }
@@ -60,6 +63,12 @@ enum RestApi {
             return "users/profile/password"
         case .changePincode:
             return "users/profile/pincode"
+        case .setAnonymous:
+            return "users/profile/anonymous"
+        case .setPublic:
+            return "users/profile/public"
+        case .price:
+            return "market/price"
         }
     }
     
@@ -129,12 +138,12 @@ enum RestApi {
     }
     
     var url: URL {
-        return innoHost.appendingPathComponent(self.path)
+        return InnovaConstanst.innoHost.appendingPathComponent(self.path)
     }
     
     var urlRequest: URLRequest {
         var request = URLRequest(url: self.url)
-        request.timeoutInterval = defaultTimeoutInterval
+        request.timeoutInterval = InnovaConstanst.defaultTimeoutInterval
         if self.method != "GET" {
             request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
             if let token = UserController.shared.token {
@@ -170,6 +179,12 @@ extension RestApi: CustomDebugStringConvertible, CustomStringConvertible {
             return "Try to change password"
         case .changePincode:
             return "Try to change pincode"
+        case .setAnonymous:
+            return "Request to make profile anonymous"
+        case .setPublic:
+            return "Request to make profile public"
+        case .price:
+            return "Request market Innova price"
         }
     }
     
@@ -182,6 +197,4 @@ extension RestApi: CustomDebugStringConvertible, CustomStringConvertible {
         """
         return text
     }
-    
-    
 }

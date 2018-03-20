@@ -55,4 +55,7 @@ struct UserProfile: Codable {
     }
 }
 
+struct UserProfileResult: Codable {
+    var result: UserProfile
+}
 

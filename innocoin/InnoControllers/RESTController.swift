@@ -44,6 +44,20 @@ class RESTController: NSObject {
         task.resume()
     }
     
+    func price(completion: @escaping (ServerResponse)->()) {
+        send(RestApi.price, completion: completion)
+    }
+    
+    func makeAnonymous(completion: @escaping (ServerResponse)->()) {
+        let rest = RestApi.setAnonymous
+        send(rest, completion: completion)
+    }
+    
+    func makePublic(completion: @escaping (ServerResponse)->()) {
+        let rest = RestApi.setPublic
+        send(rest, completion: completion)
+    }
+    
     func resetPassword(email: String, question: String, answer: String, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.resetPassword(email: email, question: question, answer: answer)
         send(rest, completion: completion)
@@ -94,6 +108,30 @@ class RESTController: NSObject {
                 }
             #endif
             if httpResponse.statusCode == rest.statusCode {
+                completion(.success(data: data, code: httpResponse.statusCode))
+            } else {
+                let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)
+                completion(.error(reason: responseError?.error.reason, code: httpResponse.statusCode))
+            }
+        }
+        task.resume()
+    }
+    
+    func call(_ rest: RestAPIProtocol, completion: @escaping (ServerResponse)->()) {
+        debugPrint(rest)
+        let task = session.dataTask(with: rest.urlRequest) { data, response, error in
+            guard error == nil,
+                let data = data,
+                let httpResponse = response as? HTTPURLResponse else {
+                    completion(.error(reason: error?.localizedDescription, code: 0))
+                    return
+            }
+            #if DEBUG
+                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    debugPrint("\(rest.description) answer: \(json)")
+                }
+            #endif
+            if (httpResponse.statusCode >= 200) &&  (httpResponse.statusCode < 300) {
                 completion(.success(data: data, code: httpResponse.statusCode))
             } else {
                 let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)

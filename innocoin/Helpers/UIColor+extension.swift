@@ -39,5 +39,6 @@ extension UIColor {
     static let buttonBorderColor = UIColor(sRed: 0, green: 6 / 255, blue: 98 / 255, alpha: 1.0)
     
     static let viewControllerLigthBackground = UIColor(sRed: 245 / 255, green: 247 / 255, blue: 250 / 255, alpha: 1.0)
-    static let deleteButtonBackgound = UIColor(sRed: 255 / 255, green: 45 / 255, blue: 85 / 255, alpha: 1.0)
+    static let redInnova = UIColor(sRed: 255 / 255, green: 45 / 255, blue: 85 / 255, alpha: 1.0)
+    static let greenInnova = UIColor(sRed: 77 / 255, green: 216 / 255, blue: 101 / 255, alpha: 1.0)
 }

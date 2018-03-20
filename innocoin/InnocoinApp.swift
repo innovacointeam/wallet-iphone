@@ -29,6 +29,7 @@ class InnocoinApp: UIResponder, UIApplicationDelegate {
         
         // Request question List from server
         LoginController.shared.getQuestions()
+        MarketPriceController.shared.fetchNew()
         
         return true
     }
@@ -54,6 +55,28 @@ class InnocoinApp: UIResponder, UIApplicationDelegate {
         return controller
     }
     
+    func setRoot(_ controller: UIViewController, options: UIViewAnimationOptions = .transitionFlipFromRight)  {
+        guard let window = window,
+            let rootVC = window.rootViewController else {
+                fatalError("Set root view controller without current")
+        }
+        
+        controller.view.frame = rootVC.view.frame
+        controller.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3,
+                          options: options,
+                          animations: {
+                            window.rootViewController = controller
+        }, completion: nil)
+    }
+    
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        return "\(version) build \(build)"
+    }
 
 }
 
