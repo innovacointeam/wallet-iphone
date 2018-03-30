@@ -101,7 +101,10 @@ class SignUpViewController: UIViewController {
         LoginController.shared.singup(user: user) { [weak self] result, reason in
             DispatchQueue.main.async {
                 if result {
-                    app.setRoot(controllerName: "MainTabBarController")
+                    // To after sigup - send back to login becouse need verify account
+                    self?.showAlert("Account created succefull. Please check email to activate", title: "Signup") {
+                        self?.navigationController?.popToRootViewController(animated: true)
+                    }
                 } else {
                     activity.removeFromSuperview()
                     blur.removeFromSuperview()

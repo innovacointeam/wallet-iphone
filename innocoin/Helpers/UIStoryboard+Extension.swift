@@ -17,12 +17,16 @@ extension UIStoryboard {
         return UIStoryboard.main.instantiateViewController(withIdentifier: "TransactionDetailsViewController") as! TransactionDetailsViewController
     }
     
-    func loginViewController() -> LoginNavigationController {
-        return self.instantiateViewController(withIdentifier: "LoginNavigationController") as! LoginNavigationController
+    static var pincodeViewController: PincodeViewController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: "PincodeViewController") as! PincodeViewController
     }
     
-    func addressBookEmptyViewController() -> AddressbookEmptyViewController  {
-       return self.instantiateViewController(withIdentifier: "AddressbookEmptyViewController") as! AddressbookEmptyViewController
+    static var loginViewController: LoginNavigationController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: "LoginNavigationController") as! LoginNavigationController
+    }
+    
+    static var addressBookEmptyViewController: AddressbookEmptyViewController  {
+       return UIStoryboard.main.instantiateViewController(withIdentifier: "AddressbookEmptyViewController") as! AddressbookEmptyViewController
     }
     
     func editContactViewController() -> EditContactViewController {

@@ -10,9 +10,12 @@ import Foundation
 
 struct Bitcoin: CryptoCurrency {
     
+    static let zero = Bitcoin()
+    
     var amount: Double
     let symbol = "BTC"
     let description = "Bitcoin"
+    let bits = 8
     
     init() {
         amount = 0

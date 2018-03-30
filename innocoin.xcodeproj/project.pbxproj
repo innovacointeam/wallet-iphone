@@ -34,6 +34,7 @@
 		DA39335C203ED7BA0079750C /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA39335B203ED7BA0079750C /* ResetPasswordViewController.swift */; };
 		DA39335F203EFE620079750C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA39335E203EFE620079750C /* LoginController.swift */; };
 		DA393361203F0F4C0079750C /* ResetPasswordFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */; };
+		DA3F7F262064046800097B60 /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3F7F252064046800097B60 /* TokenData.swift */; };
 		DA4C3A9020453D75007BFC3A /* SignupViewController+PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */; };
 		DA56D760205C1E9A0004E7F6 /* InnovaTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56D75F205C1E9A0004E7F6 /* InnovaTransaction.swift */; };
 		DA56D762205C22C40004E7F6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56D761205C22C40004E7F6 /* Reachability.swift */; };
@@ -53,13 +54,19 @@
 		DA5DE6712044B3AA00E8951E /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6702044B3AA00E8951E /* QuestionsList.swift */; };
 		DA5DE6732044C58000E8951E /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6722044C58000E8951E /* NumberButton.swift */; };
 		DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5DE6742044C8A500E8951E /* PincodeViewController.swift */; };
+		DA684DE120637DEB004320D4 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA684DE020637DEB004320D4 /* TransactionType.swift */; };
+		DA684DE32063B46A004320D4 /* PendingTransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA684DE22063B46A004320D4 /* PendingTransactionResponse.swift */; };
+		DA7BEB6D2060EC36007EF611 /* USDCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BEB6C2060EC36007EF611 /* USDCoin.swift */; };
+		DA7BEB6F2060F7F2007EF611 /* MarketPriceController+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BEB6E2060F7F2007EF611 /* MarketPriceController+Conversion.swift */; };
+		DA7BEB712061249A007EF611 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BEB702061249A007EF611 /* CurrencyTextField.swift */; };
+		DA7BEB7320612FE0007EF611 /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BEB7220612FE0007EF611 /* TransactionStatus.swift */; };
 		DA81A7F0205BB3EA0042CD2F /* InnovaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81A7EF205BB3EA0042CD2F /* InnovaConstants.swift */; };
 		DA81A7F2205BB8250042CD2F /* UIImage+Innova.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81A7F1205BB8250042CD2F /* UIImage+Innova.swift */; };
+		DA906D9120654A1400667863 /* PinCodeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA906D9020654A1400667863 /* PinCodeViewControllerDelegate.swift */; };
 		DA98F75F20512BF300FBA8A9 /* innova.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA98F75D20512BF300FBA8A9 /* innova.xcdatamodeld */; };
 		DA98F76120512D5B00FBA8A9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98F76020512D5B00FBA8A9 /* DataManager.swift */; };
 		DA9BF9A8205D130F008760DC /* Transaction+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9A7205D130F008760DC /* Transaction+extension.swift */; };
-		DA9BF9AC205D1868008760DC /* InnovaTransactionsRestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AB205D1868008760DC /* InnovaTransactionsRestAPI.swift */; };
-		DA9BF9AE205D1C7E008760DC /* RESTController+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AD205D1C7E008760DC /* RESTController+Transactions.swift */; };
+		DA9BF9AE205D1C7E008760DC /* RESTController+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AD205D1C7E008760DC /* RESTController+Wallet.swift */; };
 		DA9BF9B0205D1E31008760DC /* InnovaTransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */; };
 		DA9BF9B2205D1F21008760DC /* DataManager+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9B1205D1F20008760DC /* DataManager+Transactions.swift */; };
 		DA9BF9B5205D2740008760DC /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF9B4205D2740008760DC /* TransactionTableViewCell.swift */; };
@@ -81,6 +88,9 @@
 		DABD9F5B20403FA800494BC1 /* QuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */; };
 		DAC6A284205E3A6F00B6D95E /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A283205E3A6F00B6D95E /* DateFormatter+extension.swift */; };
 		DAC6A286205E40D000B6D95E /* MarketPriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A285205E40D000B6D95E /* MarketPriceController.swift */; };
+		DAC6A28D205E8C9800B6D95E /* InnovaWalletResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A28C205E8C9800B6D95E /* InnovaWalletResponse.swift */; };
+		DAC6A290205E8CF800B6D95E /* InnovaResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A28F205E8CF800B6D95E /* InnovaResponseError.swift */; };
+		DAC6A292205E984B00B6D95E /* InnovaWalletRestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6A291205E984B00B6D95E /* InnovaWalletRestAPI.swift */; };
 		DAC8ECC92056776400B9AF76 /* MessageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ECC82056776400B9AF76 /* MessageResult.swift */; };
 		DAC8ECCB205698CB00B9AF76 /* EditContactViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8ECCA205698CB00B9AF76 /* EditContactViewControllerType.swift */; };
 		DACD7F9B2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACD7F9A2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift */; };
@@ -127,6 +137,7 @@
 		DA39335B203ED7BA0079750C /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		DA39335E203EFE620079750C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordFinishViewController.swift; sourceTree = "<group>"; };
+		DA3F7F252064046800097B60 /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupViewController+PincodeViewController.swift"; sourceTree = "<group>"; };
 		DA56D75F205C1E9A0004E7F6 /* InnovaTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaTransaction.swift; sourceTree = "<group>"; };
 		DA56D761205C22C40004E7F6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -146,13 +157,19 @@
 		DA5DE6702044B3AA00E8951E /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
 		DA5DE6722044C58000E8951E /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		DA5DE6742044C8A500E8951E /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
+		DA684DE020637DEB004320D4 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		DA684DE22063B46A004320D4 /* PendingTransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingTransactionResponse.swift; path = InnovaResponses/PendingTransactionResponse.swift; sourceTree = "<group>"; };
+		DA7BEB6C2060EC36007EF611 /* USDCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDCoin.swift; sourceTree = "<group>"; };
+		DA7BEB6E2060F7F2007EF611 /* MarketPriceController+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketPriceController+Conversion.swift"; sourceTree = "<group>"; };
+		DA7BEB702061249A007EF611 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
+		DA7BEB7220612FE0007EF611 /* TransactionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStatus.swift; sourceTree = "<group>"; };
 		DA81A7EF205BB3EA0042CD2F /* InnovaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaConstants.swift; sourceTree = "<group>"; };
 		DA81A7F1205BB8250042CD2F /* UIImage+Innova.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Innova.swift"; sourceTree = "<group>"; };
+		DA906D9020654A1400667863 /* PinCodeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DA98F75E20512BF300FBA8A9 /* innova.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = innova.xcdatamodel; sourceTree = "<group>"; };
 		DA98F76020512D5B00FBA8A9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DA9BF9A7205D130F008760DC /* Transaction+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+extension.swift"; sourceTree = "<group>"; };
-		DA9BF9AB205D1868008760DC /* InnovaTransactionsRestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaTransactionsRestAPI.swift; sourceTree = "<group>"; };
-		DA9BF9AD205D1C7E008760DC /* RESTController+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RESTController+Transactions.swift"; sourceTree = "<group>"; };
+		DA9BF9AD205D1C7E008760DC /* RESTController+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RESTController+Wallet.swift"; sourceTree = "<group>"; };
 		DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaTransactionsResponse.swift; sourceTree = "<group>"; };
 		DA9BF9B1205D1F20008760DC /* DataManager+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Transactions.swift"; sourceTree = "<group>"; };
 		DA9BF9B4205D2740008760DC /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +191,9 @@
 		DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewController.swift; sourceTree = "<group>"; };
 		DAC6A283205E3A6F00B6D95E /* DateFormatter+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		DAC6A285205E40D000B6D95E /* MarketPriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPriceController.swift; sourceTree = "<group>"; };
+		DAC6A28C205E8C9800B6D95E /* InnovaWalletResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaWalletResponse.swift; sourceTree = "<group>"; };
+		DAC6A28F205E8CF800B6D95E /* InnovaResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaResponseError.swift; sourceTree = "<group>"; };
+		DAC6A291205E984B00B6D95E /* InnovaWalletRestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaWalletRestAPI.swift; sourceTree = "<group>"; };
 		DAC8ECC82056776400B9AF76 /* MessageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResult.swift; sourceTree = "<group>"; };
 		DAC8ECCA205698CB00B9AF76 /* EditContactViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewControllerType.swift; sourceTree = "<group>"; };
 		DACD7F9A2059317F00464A61 /* UIGestureRecognizer+LinkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+LinkLabel.swift"; sourceTree = "<group>"; };
@@ -227,7 +247,6 @@
 				DA39335B203ED7BA0079750C /* ResetPasswordViewController.swift */,
 				DA393360203F0F4C0079750C /* ResetPasswordFinishViewController.swift */,
 				DABD9F5A20403FA800494BC1 /* QuestionsTableViewController.swift */,
-				DA5DE6742044C8A500E8951E /* PincodeViewController.swift */,
 				DA4C3A8F20453D75007BFC3A /* SignupViewController+PincodeViewController.swift */,
 				DA1663F32045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift */,
 				DAB40FEB20498881001FC147 /* VerifyTokenViewController.swift */,
@@ -241,8 +260,8 @@
 				DA29A3552042A354002F7BB0 /* MainTabBarController.swift */,
 				DA04294B2042C83000642843 /* SendViewController.swift */,
 				DA04294D2042E7E300642843 /* OverviewViewController.swift */,
-				DA9BF9B3205D2714008760DC /* Transactions */,
 				DA0429512042E91600642843 /* ReceiveViewController.swift */,
+				DA9BF9B3205D2714008760DC /* Transactions */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -263,6 +282,7 @@
 			children = (
 				DA393341203EB8D90079750C /* EmailTextField.swift */,
 				DA393355203EC1080079750C /* PasswordTextField.swift */,
+				DA7BEB702061249A007EF611 /* CurrencyTextField.swift */,
 				DA5DE6722044C58000E8951E /* NumberButton.swift */,
 			);
 			path = CustomUI;
@@ -298,9 +318,10 @@
 				DA39335E203EFE620079750C /* LoginController.swift */,
 				DA2A50132044682F0091723F /* TransactionsController.swift */,
 				DA5DE66C2044AA2900E8951E /* RESTController.swift */,
-				DA9BF9AD205D1C7E008760DC /* RESTController+Transactions.swift */,
+				DA9BF9AD205D1C7E008760DC /* RESTController+Wallet.swift */,
 				DABBF7C02046C3B20053C09D /* UserController.swift */,
 				DAC6A285205E40D000B6D95E /* MarketPriceController.swift */,
+				DA7BEB6E2060F7F2007EF611 /* MarketPriceController+Conversion.swift */,
 			);
 			path = InnoControllers;
 			sourceTree = "<group>";
@@ -337,6 +358,7 @@
 		DA5DE6692044A7D100E8951E /* REST */ = {
 			isa = PBXGroup;
 			children = (
+				DAC6A28E205E8CCB00B6D95E /* InnovaResponses */,
 				DABB8E82205D0ADA00619003 /* RestApiProtocol.swift */,
 				DA5DE66A2044A7EF00E8951E /* RestApi.swift */,
 				DA5DE66E2044AB0800E8951E /* ServerResponse.swift */,
@@ -347,10 +369,9 @@
 				DABBF7B8204692CC0053C09D /* SignUpUser.swift */,
 				DABBF7BA204694260053C09D /* AccountStatus.swift */,
 				DABBF7BE2046BE660053C09D /* UserProfile.swift */,
-				DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */,
 				DA56D75F205C1E9A0004E7F6 /* InnovaTransaction.swift */,
-				DA9BF9AB205D1868008760DC /* InnovaTransactionsRestAPI.swift */,
-				DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */,
+				DAC6A291205E984B00B6D95E /* InnovaWalletRestAPI.swift */,
+				DA684DE22063B46A004320D4 /* PendingTransactionResponse.swift */,
 			);
 			path = REST;
 			sourceTree = "<group>";
@@ -364,6 +385,15 @@
 				DA56D761205C22C40004E7F6 /* Reachability.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		DA906D8F206549EF00667863 /* PinCode */ = {
+			isa = PBXGroup;
+			children = (
+				DA906D9020654A1400667863 /* PinCodeViewControllerDelegate.swift */,
+				DA5DE6742044C8A500E8951E /* PincodeViewController.swift */,
+			);
+			path = PinCode;
 			sourceTree = "<group>";
 		};
 		DA98F75C20512BD700FBA8A9 /* CoreData */ = {
@@ -392,6 +422,7 @@
 		DAA29EC6203EA77100308D9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DA906D8F206549EF00667863 /* PinCode */,
 				DA58AB60204E7B720038A13E /* QRScanner */,
 				DADA09EE2047E66A00A9A86A /* Support */,
 				DA29A3572042BB27002F7BB0 /* Menu */,
@@ -409,8 +440,23 @@
 				DABB8E85205D0D7700619003 /* Bitcoin.swift */,
 				DABB8E7E205CFD0500619003 /* CryptoCurrency.swift */,
 				DA56D763205C24CB0004E7F6 /* UnixTimeInterval.swift */,
+				DA7BEB6C2060EC36007EF611 /* USDCoin.swift */,
+				DA7BEB7220612FE0007EF611 /* TransactionStatus.swift */,
+				DA684DE020637DEB004320D4 /* TransactionType.swift */,
 			);
 			path = CustomTypos;
+			sourceTree = "<group>";
+		};
+		DAC6A28E205E8CCB00B6D95E /* InnovaResponses */ = {
+			isa = PBXGroup;
+			children = (
+				DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */,
+				DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */,
+				DAC6A28C205E8C9800B6D95E /* InnovaWalletResponse.swift */,
+				DAC6A28F205E8CF800B6D95E /* InnovaResponseError.swift */,
+				DA3F7F252064046800097B60 /* TokenData.swift */,
+			);
+			path = InnovaResponses;
 			sourceTree = "<group>";
 		};
 		DADA09EE2047E66A00A9A86A /* Support */ = {
@@ -560,10 +606,13 @@
 				DAB40FEE2049B117001FC147 /* AddressbookEmptyViewController.swift in Sources */,
 				DA119BF4205D43E1009DBBBF /* TransactionDetailsViewController.swift in Sources */,
 				DAC8ECC92056776400B9AF76 /* MessageResult.swift in Sources */,
+				DA684DE32063B46A004320D4 /* PendingTransactionResponse.swift in Sources */,
 				DABBF7BF2046BE660053C09D /* UserProfile.swift in Sources */,
-				DA9BF9AE205D1C7E008760DC /* RESTController+Transactions.swift in Sources */,
+				DA9BF9AE205D1C7E008760DC /* RESTController+Wallet.swift in Sources */,
+				DA7BEB712061249A007EF611 /* CurrencyTextField.swift in Sources */,
 				DABD9F5B20403FA800494BC1 /* QuestionsTableViewController.swift in Sources */,
 				DA9BF9B2205D1F21008760DC /* DataManager+Transactions.swift in Sources */,
+				DA684DE120637DEB004320D4 /* TransactionType.swift in Sources */,
 				DA98F76120512D5B00FBA8A9 /* DataManager.swift in Sources */,
 				DA04294C2042C83000642843 /* SendViewController.swift in Sources */,
 				DABBF7C32046C9CA0053C09D /* SignInResult.swift in Sources */,
@@ -576,11 +625,12 @@
 				DA22D9FA2053DC6800702B3C /* ResetPincodeViewController.swift in Sources */,
 				DA58AB5F204E77ED0038A13E /* EditContactViewController.swift in Sources */,
 				DA5DE6682044A2CC00E8951E /* EmptyTransactionViewController.swift in Sources */,
-				DA9BF9AC205D1868008760DC /* InnovaTransactionsRestAPI.swift in Sources */,
 				DA58AB64204E8F590038A13E /* Strings+extension.swift in Sources */,
 				DA2A50142044682F0091723F /* TransactionsController.swift in Sources */,
 				DA0429522042E91600642843 /* ReceiveViewController.swift in Sources */,
 				DA0429502042E81400642843 /* TransactionTableViewController.swift in Sources */,
+				DA7BEB6D2060EC36007EF611 /* USDCoin.swift in Sources */,
+				DA7BEB6F2060F7F2007EF611 /* MarketPriceController+Conversion.swift in Sources */,
 				DA5DE66B2044A7EF00E8951E /* RestApi.swift in Sources */,
 				DAC6A284205E3A6F00B6D95E /* DateFormatter+extension.swift in Sources */,
 				DA5DE6712044B3AA00E8951E /* QuestionsList.swift in Sources */,
@@ -589,12 +639,15 @@
 				DA4C3A9020453D75007BFC3A /* SignupViewController+PincodeViewController.swift in Sources */,
 				DAD7A5202046FF26007DE09C /* SettingsTableViewController.swift in Sources */,
 				DA5C0265205171BE003223BD /* PreviewContactViewController.swift in Sources */,
+				DAC6A290205E8CF800B6D95E /* InnovaResponseError.swift in Sources */,
 				DA39335F203EFE620079750C /* LoginController.swift in Sources */,
 				DA1663F42045498B005AACED /* SignUpViewcontroller+QuestionTableView.swift in Sources */,
 				DA39335C203ED7BA0079750C /* ResetPasswordViewController.swift in Sources */,
+				DA3F7F262064046800097B60 /* TokenData.swift in Sources */,
 				DABBF7C12046C3B20053C09D /* UserController.swift in Sources */,
 				DA04294E2042E7E300642843 /* OverviewViewController.swift in Sources */,
 				DAC8ECCB205698CB00B9AF76 /* EditContactViewControllerType.swift in Sources */,
+				DA7BEB7320612FE0007EF611 /* TransactionStatus.swift in Sources */,
 				DA5DE66D2044AA2900E8951E /* RESTController.swift in Sources */,
 				DA393356203EC1080079750C /* PasswordTextField.swift in Sources */,
 				DABB8E81205D036800619003 /* InnovaCoin.swift in Sources */,
@@ -613,11 +666,13 @@
 				DAF7E67020527F7D00D96511 /* ChangePasswordViewController.swift in Sources */,
 				DA5C025720514B69003223BD /* DataManager+Contact.swift in Sources */,
 				DA81A7F0205BB3EA0042CD2F /* InnovaConstants.swift in Sources */,
+				DA906D9120654A1400667863 /* PinCodeViewControllerDelegate.swift in Sources */,
 				DA9BF9B0205D1E31008760DC /* InnovaTransactionsResponse.swift in Sources */,
 				DA393358203EC1380079750C /* UITextField+extension.swift in Sources */,
 				DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */,
 				DA5C0259205156D2003223BD /* RouterViewControllers.swift in Sources */,
 				DABB8E7F205CFD0500619003 /* CryptoCurrency.swift in Sources */,
+				DAC6A292205E984B00B6D95E /* InnovaWalletRestAPI.swift in Sources */,
 				DA5C026320515D53003223BD /* ContactsTableViewController.swift in Sources */,
 				DAF0B311203DC3EC0061000F /* UIColor+extension.swift in Sources */,
 				DA5C0260205158E3003223BD /* UIStoryboard+Extension.swift in Sources */,
@@ -626,6 +681,7 @@
 				DAC6A286205E40D000B6D95E /* MarketPriceController.swift in Sources */,
 				DA9BF9A8205D130F008760DC /* Transaction+extension.swift in Sources */,
 				DADA09F02047E68A00A9A86A /* AlertViewController.swift in Sources */,
+				DAC6A28D205E8C9800B6D95E /* InnovaWalletResponse.swift in Sources */,
 				DABB8E86205D0D7700619003 /* Bitcoin.swift in Sources */,
 				DA39333F203EB3C90079750C /* LoginNavigationController.swift in Sources */,
 				DAB40FEC20498881001FC147 /* VerifyTokenViewController.swift in Sources */,

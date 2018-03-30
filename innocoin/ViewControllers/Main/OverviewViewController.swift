@@ -12,13 +12,22 @@ class OverviewViewController: UIViewController {
 
     @IBOutlet weak var priceBTCLabel: UILabel!
     @IBOutlet weak var priceUSDLabel: UILabel!
-    @IBOutlet weak var innField: UITextField!
-    @IBOutlet weak var btcField: UITextField!
-    @IBOutlet weak var innUSDField: UITextField!
-    @IBOutlet weak var usdField: UITextField!
+    @IBOutlet weak var innFakeField: UITextField!
+    @IBOutlet weak var btcFakeField: UITextField!
+    @IBOutlet weak var innFakeUSDField: UITextField!
+    @IBOutlet weak var usdFakeField: UITextField!
     @IBOutlet weak var priceContainer: UIView!
     @IBOutlet weak var calculatorContainer: UIView!
     @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var btcTrendImage: UIImageView!
+    @IBOutlet weak var usdTrendImage: UIImageView!
+    @IBOutlet weak var inntoBtcStack: UIStackView!
+    @IBOutlet weak var btcToInnStack: UIStackView!
+    @IBOutlet weak var usdToInnStack: UIStackView!
+    @IBOutlet weak var innToUSDStack: UIStackView!
+    @IBOutlet weak var centerY: NSLayoutConstraint!
+    
+    private var CalculatorYCenterAnchor: NSLayoutConstraint!
     
     private var price: InnovaPrice! {
         didSet {
@@ -30,30 +39,22 @@ class OverviewViewController: UIViewController {
         }
     }
     
-    enum inputField: Int {
-        case fromInnToBtc = 1
-        case fromBtcToInn = 2
-        case fromUsdToInn = 3
-        case fromInnToUsd = 4
-    }
+    private let innToBtcField = InnovaTextField()
+    private let btcToInnField = BitcoinTextField()
+    private let innToUSDField = InnovaTextField()
+    private let usdToInnField = USDTextField()
+
+    private var originY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         hideKeyboard()
-        innField.delegate = self
-        btcField.delegate = self
-        usdField.delegate = self
-        innUSDField.delegate = self
         
         // Clear all fields
-        priceBTCLabel.text = "BTC 0.00000000"
-        priceUSDLabel.text = "USD 0.00"
-        innField.text = "0.0"
-        btcField.text = "0.0"
-        innUSDField.text = "0.0"
-        usdField.text = "0.0"
-
+        populatePrice()
+        prepareCoinFields()
+        
         priceContainer.backgroundColor = UIColor.backgroundStatusBar
         view.backgroundColor = UIColor.viewControllerLigthBackground
         calculatorContainer.layer.cornerRadius = 10
@@ -64,8 +65,19 @@ class OverviewViewController: UIViewController {
         calculatorContainer.layer.masksToBounds = false
         calculatorContainer.layer.shadowOffset = CGSize(width: 5, height: 5)
         calculatorContainer.layer.shadowOpacity = 0.7
+        calculatorContainer.translatesAutoresizingMaskIntoConstraints = false
+        CalculatorYCenterAnchor = centerY
         
         price = MarketPriceController.shared.last()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                               name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(_:)),
+                                               name: Notification.Name.UIKeyboardDidHide, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -78,18 +90,62 @@ class OverviewViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        originY = CalculatorYCenterAnchor.constant
+    }
+    
+    private func prepareCoinFields() {
+        innFakeField.removeFromSuperview()
+        btcFakeField.removeFromSuperview()
+        innFakeUSDField.removeFromSuperview()
+        usdFakeField.removeFromSuperview()
+        
+        createCoinField(innToBtcField, in: inntoBtcStack, tag: 1)
+        innToBtcField.amountDelegate = self
+        
+        createCoinField(btcToInnField, in: btcToInnStack, tag: 2)
+        btcToInnField.amountDelegate = self
+
+        createCoinField(innToUSDField, in: innToUSDStack, tag: 3)
+        innToUSDField.amountDelegate = self
+        
+        createCoinField(usdToInnField, in: usdToInnStack, tag: 4)
+        usdToInnField.amountDelegate = self
+    }
+    
+    private func createCoinField(_ field: UITextField, in stack: UIStackView, tag: Int) {
+        field.tag = tag
+        field.delegate = self
+        stack.addArrangedSubview(field)
+        field.borderStyle = .roundedRect
+        field.adjustsFontSizeToFitWidth = true
+        field.heightAnchor.constraint(equalToConstant: 35).isActive = true
+    }
+    
     private func populatePrice() {
-        timestampLabel.text = price.timestamp.description
-        priceBTCLabel.text = String(format: "BTC %.8f", price.btcToUsd)
-        priceUSDLabel.text = String(format: "USD %.2f", price.innToUsd)
+        guard let price = price else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.timestampLabel.text = price.timestamp.description
+            self?.priceBTCLabel.text = "BTC \(InnovaCoin(price.innToBtc).string)"
+            self?.priceUSDLabel.text = "USD \(USDCoin(price.innToUsd).string)"
+            
+            self?.btcTrendImage.image = MarketPriceController.shared.btcTrend.icon
+            self?.usdTrendImage.image = MarketPriceController.shared.usdTrend.icon
+        }
+
     }
     
     private func enableInput() {
         let enable  =  price != nil
-        innField.isEnabled = enable
-        btcField.isEnabled = enable
-        innUSDField.isEnabled = enable
-        usdField.isEnabled = enable
+        DispatchQueue.main.async { [weak self] in
+            self?.innToBtcField.isEnabled = enable
+            self?.btcToInnField.isEnabled = enable
+            self?.innToUSDField.isEnabled = enable
+            self?.usdToInnField.isEnabled = enable
+        }
     }
     
     @IBAction func menuTapped(_ sender: Any) {
@@ -100,25 +156,65 @@ class OverviewViewController: UIViewController {
         mainTabBar.openMenu()
     }
     
-    @IBAction func usdToInnTapped(_ sender: Any) {
+    // MARK: - Keyboard observer
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
+                return
+        }
+        var frame = calculatorContainer.frame
+        frame.size.height += 80
+        let intersection = frame.intersection(keyboardFrame)
+        if intersection != CGRect.zero {
+            
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.CalculatorYCenterAnchor.isActive = false
+                self?.CalculatorYCenterAnchor.constant -= intersection.height
+                self?.CalculatorYCenterAnchor.isActive = true
+                self?.view.layoutIfNeeded()
+            }
+        }
     }
     
-    @IBAction func innToBTCTapped(_ sender: Any) {
-    }
-    
-    private func calculate(_ text: String, tag: Int) {
-        guard let value = Double(text) else {
+    @objc private func keyboardDidHide(_ notfication: Notification) {
+        guard CalculatorYCenterAnchor.constant != originY else {
             return
         }
-        switch tag {
-        case inputField.fromInnToBtc.rawValue:
-            btcField.text = String(format: "%.8f", arguments: [value * price.innToBtc])
-        case inputField.fromBtcToInn.rawValue:
-            innField.text = String(format: "%.8f", arguments: [value /  price.innToBtc])
-        case inputField.fromUsdToInn.rawValue:
-            innUSDField.text = String(format: "%.8f", arguments: [value / price.innToUsd])
-        case inputField.fromInnToUsd.rawValue:
-            usdField.text = String(format: "%.2f", arguments: [value *  price.innToUsd])
+        let y  = originY
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.CalculatorYCenterAnchor.isActive = false
+            self?.CalculatorYCenterAnchor.constant = y
+            self?.CalculatorYCenterAnchor.isActive = true
+            self?.view.layoutIfNeeded()
+        })
+    }
+    
+}
+
+extension OverviewViewController: CurrencyTextFieldDelegate {
+    
+    func didChange(_ textField: UITextField) {
+        switch textField.tag {
+        case 1:
+            if let innova = (textField as? InnovaTextField)?.amount {
+                let btc: Bitcoin = MarketPriceController.shared.convert(from: innova)
+                btcToInnField.text = btc.string
+            }
+        case 2:
+            if let btc = (textField as? BitcoinTextField)?.amount {
+                let innova: InnovaCoin = MarketPriceController.shared.convert(from: btc)
+                innToBtcField.text = innova.string
+            }
+        case 3:
+            if let innova = (textField as? InnovaTextField)?.amount {
+                let usd: USDCoin = MarketPriceController.shared.convert(from: innova)
+                usdToInnField.text = usd.string
+            }
+        case 4:
+            if let usd = (textField as? USDTextField)?.amount {
+                let innova: InnovaCoin = MarketPriceController.shared.convert(from: usd)
+                innToUSDField.text = innova.string
+            }
         default:
             break
         }
@@ -128,13 +224,8 @@ class OverviewViewController: UIViewController {
 
 extension OverviewViewController: UITextFieldDelegate {
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text,
-            let textRange = Range(range, in: text) else {
-                return true
-        }
-        let updatedText = text.replacingCharacters(in: textRange,  with: string)
-        calculate(String(updatedText), tag: textField.tag)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

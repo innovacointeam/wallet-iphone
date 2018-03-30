@@ -16,6 +16,35 @@ final class DataManager {
 
     private let modelName = "innova"
     
+    private let walletJSONKey = "com.innova.WalletJSON"
+    private let pendingJSONKey = "com.innova.PendingJSON"
+    
+    var lastPending: Data? {
+        get {
+            return UserDefaults.standard.data(forKey: pendingJSONKey)
+        }
+        set {
+            guard let data = newValue else {
+                return
+            }
+            UserDefaults.standard.set(data, forKey: pendingJSONKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    var lastWallet: Data? {
+        get {
+            return UserDefaults.standard.data(forKey: walletJSONKey)
+        }
+        set {
+            guard let data = newValue else {
+                return
+            }
+            UserDefaults.standard.set(data, forKey: walletJSONKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     private(set) lazy var context: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
@@ -62,4 +91,5 @@ final class DataManager {
         }
 
     }
+    
 }

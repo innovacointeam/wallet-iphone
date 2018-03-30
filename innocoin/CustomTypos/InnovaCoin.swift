@@ -8,17 +8,18 @@
 
 import Foundation
 
-struct InnovaCoin: CryptoCurrency {
-
+struct InnovaCoin: CryptoCurrency  {
+    
+    static let zero = InnovaCoin()
+    
     var amount: Double
     let symbol = "INN"
     let description = "Innova coin"
-    
+    let bits = 8
+
     init() {
         amount = 0
     }
-    
-    var usd: Double {
-        return amount * MarketPriceController.shared.innovaToUSD
-    }
+
 }
+

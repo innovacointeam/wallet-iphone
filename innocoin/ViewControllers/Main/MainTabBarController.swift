@@ -151,6 +151,11 @@ class MainTabBarController: UITabBarController {
         }
         present(activityViewController, animated: true, completion: nil)
     }
+    
+    // MARK: - Select tab
+    func setTransactions() {
+        selectedIndex = 2
+    }
 }
 
 extension MainTabBarController: MFMailComposeViewControllerDelegate {
@@ -168,7 +173,7 @@ extension MainTabBarController: MFMailComposeViewControllerDelegate {
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = self
         mail.setToRecipients([InnovaConstanst.supportEmail])
-        mail.setSubject("Wallet ID: \(UserController.shared.wallet ?? UserController.shared.email), status: \(UserController.shared.status.rawValue)")
+        mail.setSubject("Wallet ID: \(UserController.shared.walletID ?? UserController.shared.email), status: \(UserController.shared.status.rawValue)")
         
         self.present(mail, animated: true)
     }
@@ -187,7 +192,7 @@ extension MainTabBarController: AlertViewControllerDelegate {
     
     func didAction(_ name: String) {
         UserController.shared.logout()
-        innovaApp?.setRoot(storyboard!.loginViewController(), options: .transitionFlipFromLeft)
+        innovaApp?.setRoot(UIStoryboard.loginViewController, options: .transitionFlipFromLeft)
     }
     
     

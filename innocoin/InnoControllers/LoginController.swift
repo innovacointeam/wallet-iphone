@@ -7,12 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 class LoginController {
     
     static let shared = LoginController()
     
     var questions = [String]()
+    private var atemptToRenowalToken = false
+    
+    private var email: String!
+    private var password: String!
     
     private init() { }
     
@@ -39,6 +44,26 @@ class LoginController {
         }
     }
     
+    func tokenExpired() {
+        guard !atemptToRenowalToken else {
+            atemptToRenowalToken = false
+            return
+        }
+        atemptToRenowalToken = true
+        singin(with: email, password: password) { [weak self] result, _ in
+            defer {
+                self?.atemptToRenowalToken = false
+            }
+            if !result {
+                let app = UIApplication.shared.delegate as? InnocoinApp
+                app?.mainTabBar?.showAlert("Session expired. Please relogin", title: "Innova") {
+                    app?.setRoot(UIStoryboard.loginViewController, options: .transitionFlipFromLeft)
+                }
+            }
+        }
+    }
+    
+    
     func singin(with email: String, password: String, completion: @escaping (Bool, String?)->()) {
         RESTController.shared.signin(email: email, password: password) { response in
             switch response {
@@ -46,9 +71,13 @@ class LoginController {
                 let answer = try? JSONDecoder().decode(SignInResult.self, from: data)
                 UserController.shared.token = answer?.result.token
                 UserController.shared.profile = answer?.result.user
+                self.email = email
+                self.password = password
                 completion(true, nil)
             case .error(let reason, let code):
                 completion(false, "\(code ?? 0): \(reason ?? "Unknown reasons")")
+                self.email = nil
+                self.password = nil
             }
         }
     }

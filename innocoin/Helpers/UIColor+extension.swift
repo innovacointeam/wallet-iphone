@@ -41,4 +41,6 @@ extension UIColor {
     static let viewControllerLigthBackground = UIColor(sRed: 245 / 255, green: 247 / 255, blue: 250 / 255, alpha: 1.0)
     static let redInnova = UIColor(sRed: 255 / 255, green: 45 / 255, blue: 85 / 255, alpha: 1.0)
     static let greenInnova = UIColor(sRed: 77 / 255, green: 216 / 255, blue: 101 / 255, alpha: 1.0)
+    static let darkYellowInnova = UIColor(sRed: 249/255, green: 192/255, blue: 105/255, alpha: 1.0)
+    static let acceptedTransactionColor = UIColor(sRed: 254 / 255, green: 189 / 255, blue: 140 / 255, alpha: 1.0)
 }

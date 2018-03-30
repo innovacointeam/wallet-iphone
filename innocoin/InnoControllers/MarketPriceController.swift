@@ -7,6 +7,36 @@
 //
 
 import Foundation
+import UIKit
+
+enum CurrencyTrend {
+    
+    case up
+    case down
+    case same
+    
+    init<T:Comparable>(new: T, old: T) {
+        switch (new, old) {
+        case let (a,b) where a > b:
+            self = .up
+        case let (a,b) where a < b:
+            self = .down
+        default:
+            self = .same
+        }
+    }
+    
+    var icon: UIImage? {
+        switch self {
+        case .up:
+            return #imageLiteral(resourceName: "RiseArrow")
+        case .down:
+            return #imageLiteral(resourceName: "downArrow")
+        case .same:
+            return nil
+        }
+    }
+}
 
 /// Market prices
 /// Stored last known market prices
@@ -27,12 +57,27 @@ class MarketPriceController {
                 UserDefaults.standard.set(data, forKey: MarketPricesKey)
                 UserDefaults.standard.synchronize()
             }
+            if (oldValue != nil) && oldValue.timestamp < prices.timestamp {
+                btcTrend = CurrencyTrend(new: prices.innToBtc, old: oldValue.innToBtc)
+                usdTrend = CurrencyTrend(new: prices.innToUsd, old: oldValue.innToUsd)
+            }
         }
     }
     
-    var innovaToUSD: Double {
+    var INNToUSD: Double {
         return prices?.innToUsd ?? 0
     }
+    
+    var INNtoBTC: Double {
+        return prices?.innToBtc ?? 0
+    }
+    
+    var BTCtoUSD: Double {
+        return prices?.btcToUsd ?? 0
+    }
+    
+    var btcTrend: CurrencyTrend = .same
+    var usdTrend: CurrencyTrend = .same
     
 	private init() {
         if let data = UserDefaults.standard.data(forKey: MarketPricesKey) {

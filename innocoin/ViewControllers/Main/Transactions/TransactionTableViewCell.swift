@@ -19,6 +19,16 @@ class TransactionTableViewCell: UITableViewCell {
             guard transaction != nil else {
                 return
             }
+            populateTransaction()
+        }
+    }
+    
+    var pending: PendingTransaction! {
+        didSet {
+            guard pending != nil else {
+                return
+            }
+            populatePending()
         }
     }
     
@@ -31,13 +41,22 @@ class TransactionTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
     func populateTransaction() {
         dateLabel.text = transaction.timestamp.humanReadable
-        statusLabel.text = transaction.typeDescription
-        statusLabel.textColor = transaction.typeDescriptionColor
-        amountLabel.backgroundColor = transaction.typeDescriptionColor
-        amountLabel.text = transaction.amountCoins.debugDescription
+        statusLabel.text = transaction.type.description
+        let color = transaction.status == .confirmed ? transaction.type.color : transaction.type.color.withAlphaComponent(0.5)
+        statusLabel.textColor = color
+        amountLabel.backgroundColor = color
+        amountLabel.text = transaction.amountCoins.humanDescription
+    }
+    
+    func populatePending() {
+        dateLabel.text = pending.created.humanReadable
+        statusLabel.text = pending.description
+        statusLabel.textColor = UIColor.lightGray
+        amountLabel.backgroundColor = UIColor.lightGray
+        amountLabel.text = pending.amount.humanDescription
     }
     
 }

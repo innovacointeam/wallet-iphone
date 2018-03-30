@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol PincodeViewControllerDelegate {
-    func didEnter(pin: String?)
-}
-
 class PincodeViewController: UIViewController {
 
     static let pefferedSize = CGSize(width: 300, height: 420)
@@ -35,6 +31,18 @@ class PincodeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        firstNumberLabel.text = "✻"
+        secondNumberLabel.text = "✻"
+        thirthNumberLabel.text = "✻"
+        forthNumberLabel.text = "✻"
+        fifthNumberLabel.text = "✻"
+        sixthNumberLabel.text = "✻"
+        pincode = ""
+    }
+    
     @IBAction func buttonTapped(_ sender: NumberButton) {
         switch sender.tag {
         case 100:

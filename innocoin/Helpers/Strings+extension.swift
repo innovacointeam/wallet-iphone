@@ -11,16 +11,29 @@ import UIKit
 
 extension String {
     
-    func generateQRCode() -> UIImage? {
-        guard let filter = CIFilter(name: "CIQRCodeGenerator"),
-            let data = self.data(using: .isoLatin1) else {
+    func generateQRCode(withSize size: CGFloat) -> UIImage? {
+        //Get self as data
+        let stringData = self.data(using: String.Encoding.utf8)
+        
+        //Generate CIImage
+        let filter = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setValue(stringData, forKey: "inputMessage")
+        filter?.setValue("H", forKey: "inputCorrectionLevel")
+        
+        guard let ciImage = filter?.outputImage else {
             return nil
         }
-        filter.setValue(data, forKey: "inputMessage")
-        let transform = CGAffineTransform(scaleX: 1, y: 1)
-        guard let qrCode = filter.outputImage?.transformed(by: transform) else {
-            return nil
-        }
-        return UIImage(ciImage: qrCode)
+        
+        //Scale image to proper size
+        let scale = size / ciImage.extent.size.width
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        let scaledCIImage = ciImage.transformed(by: transform)
+        
+        //Convert to CGImage
+        let ciContext = CIContext()
+        guard let cgImage = ciContext.createCGImage(scaledCIImage, from: scaledCIImage.extent) else { return nil }
+        
+        //Finally return UIImage
+        return UIImage(cgImage: cgImage)
     }
 }

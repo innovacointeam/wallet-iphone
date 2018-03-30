@@ -12,7 +12,8 @@ import Foundation
 class RESTController: NSObject {
 	
 	static let shared = RESTController()
-	
+    private var reachability: Reachability!
+    
     private lazy var session: URLSession = {
         var newSession = URLSession(configuration: URLSessionConfiguration.default,
                                     delegate: self,
@@ -20,7 +21,16 @@ class RESTController: NSObject {
         return newSession
     }()
     
-    private override init() { }
+    private override init() {
+        reachability = Reachability(hostname: InnovaConstanst.innoHost.absoluteString)
+    }
+    
+    var online: Bool {
+        guard reachability != nil else {
+            return false
+        }
+        return reachability.connection != .none
+    }
     
     deinit {
         debugPrint("REST Controller deinit")
@@ -118,6 +128,10 @@ class RESTController: NSObject {
     }
     
     func call(_ rest: RestAPIProtocol, completion: @escaping (ServerResponse)->()) {
+        guard reachability.connection != .none else {
+            completion(.error(reason: "Internet connection unreachable. Please check you settings", code: 1100))
+            return
+        }
         debugPrint(rest)
         let task = session.dataTask(with: rest.urlRequest) { data, response, error in
             guard error == nil,
@@ -127,13 +141,17 @@ class RESTController: NSObject {
                     return
             }
             #if DEBUG
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                    debugPrint("\(rest.description) answer: \(json)")
-                }
+                let jsonString = String(data: data, encoding: .utf8)
+                debugPrint("Raw json answer: \(jsonString ?? "")")
             #endif
-            if (httpResponse.statusCode >= 200) &&  (httpResponse.statusCode < 300) {
+            switch httpResponse.statusCode {
+            case 200..<300:
                 completion(.success(data: data, code: httpResponse.statusCode))
-            } else {
+            case 401:
+                completion(.error(reason: "Authorisation token expired.", code: 401))
+                // Try to login one more time
+                LoginController.shared.tokenExpired()
+            default:
                 let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)
                 completion(.error(reason: responseError?.error.reason, code: httpResponse.statusCode))
             }

@@ -15,57 +15,27 @@ extension Transaction {
         return UnixTimeInterval(integerLiteral: timereceived)
     }
     
-    var typeDescription: String {
-        return isReceived ? "RECEIVED" : "SENT"
-    }
-    
-    var typeDescriptionColor: UIColor {
-        return isReceived ? UIColor.greenInnova : UIColor.redInnova
-    }
-    
     var amountCoins: InnovaCoin {
         return InnovaCoin(floatLiteral: amount)
     }
     
+    var type: TransactionType {
+        return TransactionType(category)
+    }
+    
+    var status: TransactionStatus {
+        return TransactionStatus(confirmations)
+    }
+    
+    var mainColor: UIColor {
+        return status == .confirmed ? type.color : type.color.withAlphaComponent(0.5)
+    }
+    
     var statusColor: UIColor {
-        switch Int(confirmations) {
-        case 0:
-            return UIColor.redInnova
-        case 1...InnovaConstanst.confirmationCountForTransaction:
-            return UIColor.orange
-        default:
-            return UIColor.greenInnova
-        }
+        return status.color
     }
     
-    var status: String {
-        switch Int(confirmations) {
-        case 0:
-            return "pending"
-        case 1...InnovaConstanst.confirmationCountForTransaction:
-            return "\(confirmations) confirmations"
-        default:
-            return "confirmed"
-        }
-    }
-    
-    /// Fill send transaction from InnovaTransaction Structure
-    ///
-    /// - Parameter json: InnoveTransaction
-    func send(_ json: InnovaTransaction) {
-        from(json)
-        isReceived = false
-    }
-    
-    /// Fill received transaction from InnovaTransaction Structure
-    ///
-    /// - Parameter json: InnoveTransaction
-    func received(_ json: InnovaTransaction)  {
-        from(json)
-        isReceived = true
-    }
-    
-    private func from(_ json: InnovaTransaction) {
+    func populate(_ json: InnovaTransaction) {
         id = json.id
         account = json.account
         address = json.address
@@ -84,5 +54,4 @@ extension Transaction {
         bip125 = json.bip125_replaceable
         abandoned = json.abandoned
     }
-    
 }

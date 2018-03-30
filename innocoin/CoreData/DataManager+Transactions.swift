@@ -23,27 +23,22 @@ extension DataManager {
 
     }
     
-    func updateSended(transactions: [InnovaTransaction]) {
-        debugPrint("Update sended transactions: \(transactions.count)")
+    func update(transactions: [InnovaTransaction]) {
+        guard transactions.count > 0 else {
+            return
+        }
         for transaction in transactions {
             let entity = getTransaction(by: transaction.id) ?? Transaction(entity: Transaction.entity(), insertInto: context)
-            entity.send(transaction)
+            entity.populate(transaction)
         }
         save()
     }
     
-    func updateReceived(transactions: [InnovaTransaction]) {
-        debugPrint("Update received transactions: \(transactions.count)")
-        for transaction in transactions {
-            let entity = getTransaction(by: transaction.id) ?? Transaction(entity: Transaction.entity(), insertInto: context)
-            entity.received(transaction)
-        }
-        save()
-    }
     
     func transactionsFetchController() ->  NSFetchedResultsController<Transaction> {
         let fetch: NSFetchRequest<Transaction> = Transaction.fetchRequest()
-        fetch.sortDescriptors = [NSSortDescriptor(key: "timereceived", ascending: true)]
+        fetch.sortDescriptors = [NSSortDescriptor(key: "timereceived", ascending: false)]
+        fetch.fetchBatchSize = 20
         let controller = NSFetchedResultsController(fetchRequest: fetch,
                                                     managedObjectContext: context,
                                                     sectionNameKeyPath: nil,

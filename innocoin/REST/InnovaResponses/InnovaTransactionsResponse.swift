@@ -9,10 +9,10 @@
 import Foundation
 
 
-struct InnovaTransactionsResponse: Codable {
+struct InnovaTransactionsResponse: Decodable {
 
-    var error: String?
-    var transactions: [InnovaTransaction]
+    var error: InnovaResponseErrror?
+    var transactions: [InnovaTransaction] = [InnovaTransaction]()
 
     enum CodingKeys: String, CodingKey {
         case result = "result"
@@ -25,11 +25,10 @@ struct InnovaTransactionsResponse: Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let result = try values.nestedContainer(keyedBy: TransactionsKey.self, forKey: .result)
-        self.transactions = try result.decode([InnovaTransaction].self, forKey: .transactions)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        
+        if values.contains(.result) {
+            let result = try values.nestedContainer(keyedBy: TransactionsKey.self, forKey: .result)
+            self.transactions = try result.decode([InnovaTransaction].self, forKey: .transactions)
+        }
+        error = try values.decodeIfPresent(InnovaResponseErrror.self, forKey: .error)
     }
 }

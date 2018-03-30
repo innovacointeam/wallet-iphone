@@ -31,6 +31,19 @@ class InnocoinApp: UIResponder, UIApplicationDelegate {
         LoginController.shared.getQuestions()
         MarketPriceController.shared.fetchNew()
         
+        // Load previous data
+        do {
+            if let data = DataManager.shared.lastPending,
+                let pending = try JSONDecoder().decode(PendingTransactionResponse.self, from: data).transactions {
+                UserController.shared.pending = pending
+            }
+            if let data = DataManager.shared.lastWallet,
+                let wallet = try JSONDecoder().decode(InnovaWalletResponse.self, from: data).wallet {
+                UserController.shared.wallet = wallet
+            }
+        } catch let error as NSError {
+            debugPrint(error.localizedFailureReason ?? error.localizedDescription)
+        }
         return true
     }
     
@@ -77,6 +90,7 @@ class InnocoinApp: UIResponder, UIApplicationDelegate {
         let build = dictionary["CFBundleVersion"] as! String
         return "\(version) build \(build)"
     }
+
 
 }
 

@@ -20,7 +20,7 @@ class ContactsTableViewController: UITableViewController {
     }()
     
     private lazy var emptyController: AddressbookEmptyViewController = {
-       let controller = storyboard!.addressBookEmptyViewController()
+       let controller = UIStoryboard.addressBookEmptyViewController
        return controller
     }()
     

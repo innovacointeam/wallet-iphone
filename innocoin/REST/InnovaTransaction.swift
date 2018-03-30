@@ -47,26 +47,4 @@ struct InnovaTransaction: Codable {
         case bip125_replaceable
         case abandoned
     }
-    
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        id = try container.decode(String.self, forKey: .id)
-//        account = try container.decode(String.self, forKey: .account)
-//        address = try container.decode(String.self, forKey: .address)
-//        category = try container.decode(String.self, forKey: .category)
-//        amount = try container.decode(Double.self, forKey: .amount)
-//        label = try container.decodeIfPresent(String.self, forKey: .label)
-//        comment = try container.decodeIfPresent(String.self, forKey: .comment)
-//        vout = try container.decode(Double.self, forKey: .vout)
-//        fee = try container.decode(Double.self, forKey: .fee)
-//        confirmations = try container.decode(Double.self, forKey: .confirmations)
-//        blockhash = try container.decode(String.self, forKey: .blockhash)
-//        blockindex = try container.decode(Int.self, forKey: .blockindex)
-//        blocktime = try container.decode(UnixTimeInterval.self, forKey: .blocktime)
-//        time = try container.decode(UnixTimeInterval.self, forKey: .time)
-//        timereceived = try container.decode(UnixTimeInterval.self, forKey: .timereceived)
-//        bip125_replaceable = try container.decode(String.self, forKey: .bip125_replaceable)
-//        abandoned = try container.decode(Bool.self, forKey: .abandoned)
-//    }
-
 }
