@@ -76,6 +76,15 @@ class PreviewContactViewController: UIViewController {
     }
     
     @IBAction func sendInnovaTapped(_ sender: Any) {
+        guard let address = walletLabel.text, !address.isEmpty else {
+            showAlert("Wallet address cannot be empty", title: "Add contact")
+            return
+        }
+        DataManager.shared.selectedAddressToSend = address
+        tabBarController?.selectedIndex = 0
+        print(address)
+        
+        //self.dismissViewControllrAnimated(false, completion: {});
     }
     
     
