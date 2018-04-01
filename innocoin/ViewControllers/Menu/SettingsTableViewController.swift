@@ -48,8 +48,8 @@ class SettingsTableViewController: UITableViewController {
     // MArk user actions
     private func populateRestResponse(_ response: ServerResponse) {
         switch response {
-        case .error(let reason, let code):
-            showAlert("\(code ?? 0): \(reason ?? "Unknown")", title: "Update Error")
+        case .error(let reason, let title):
+            showAlert("\(reason ?? "Unknown")", title: title ?? "Update Error")
         case .success(let data, _):
             do {
                 let profile = try JSONDecoder().decode(UserProfileResult.self, from: data)

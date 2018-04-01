@@ -99,8 +99,8 @@ class ChangePasswordViewController: UIViewController {
         blur?.removeFromSuperview()
         navigationController?.isNavigationBarHidden = false
         switch response {
-        case .error(let reason, let code):
-            showAlert("\(code ?? 0): \(reason ?? "Unknown error")", title: type.title)
+        case .error(let reason, let title):
+            showAlert("\(reason ?? "Unknown error")", title: title ?? "Innova")
         case .success(let data, _):
             if let serverMessage = try? JSONDecoder().decode(MessageResult.self, from: data).result.message {
                 showAlert(serverMessage, title: type.title) {

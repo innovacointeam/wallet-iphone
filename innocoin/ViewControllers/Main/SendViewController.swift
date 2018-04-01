@@ -215,8 +215,8 @@ extension SendViewController: PincodeViewControllerDelegate {
                 blur.removeFromSuperview()
                 self?.navigationController?.setNavigationBarHidden(false, animated: true)
                 switch response {
-                case .error(let reason, let code):
-                    self?.showAlert("\(code ?? 0): \(reason ?? "Unknown")")
+                case .error(let reason, let title):
+                    self?.showAlert("\(reason ?? "Unknown")", title: title ?? "Innova")
                 case .success(let data, _):
                     if let message = try? JSONDecoder().decode(MessageResult.self, from: data).result.message {
                         self?.showAlert(message, title: "Send Innova") {

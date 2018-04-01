@@ -61,6 +61,7 @@ class TransactionTableViewController: UITableViewController {
         
         fetchTransactions()
     }
+    
 
     // MARK: - User actions
     private func fetchTransactions() {
@@ -155,7 +156,10 @@ class TransactionTableViewController: UITableViewController {
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let delete = UIAlertAction(title: "Delete", style: .default) { _ in
                 completion(true)
-                RESTController.shared.delete(txid: pending.id) { _ in
+                RESTController.shared.delete(txid: pending.id) { response in
+                    if case  ServerResponse.success(nil, 0) = response {
+                        UserController.shared.pending = UserController.shared.pending.filter() { $0.id != pending.id }
+                    }
                     DispatchQueue.main.async { [weak self] in
                         self?.fetchTransactions()
                     }

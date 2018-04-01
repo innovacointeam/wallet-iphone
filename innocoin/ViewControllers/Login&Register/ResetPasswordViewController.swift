@@ -154,8 +154,8 @@ class ResetPasswordViewController: UIViewController {
             self?.navigationController?.isNavigationBarHidden = false
             
             switch response {
-            case .error(let reason, let code):
-                self?.showAlert("\(code ?? 0): \(reason ?? "unknown")", title: "Reset Error")
+            case .error(let reason, _):
+                self?.showAlert("\(reason ?? "unknown")", title: "Reset Error")
             case .success:
                 RouterViewControllers.shared.pop()
             }

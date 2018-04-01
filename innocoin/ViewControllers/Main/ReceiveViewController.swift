@@ -32,7 +32,7 @@ class ReceiveViewController: UIViewController {
         hideKeyboard()
         
         let longTap = UILongPressGestureRecognizer(target: self, action: #selector(copyQRCode(_:)))
-        longTap.minimumPressDuration = 2
+        longTap.minimumPressDuration = 1.5
         qrCode.isUserInteractionEnabled = true
         qrCode.addGestureRecognizer(longTap)
         walletLabel.text = UserController.shared.account?.address ?? UserController.shared.walletID
@@ -149,7 +149,7 @@ class ReceiveViewController: UIViewController {
         UIPasteboard.general.string = "Innova wallet"
         UIPasteboard.general.image = qrCode.image
         
-        showAlert("QR code with wallet ID copied", title: "Innova wallet")
+        showAlert("QR code with wallet address copied", title: "Innova wallet")
     }
 }
 

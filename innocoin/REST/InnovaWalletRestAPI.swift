@@ -17,6 +17,7 @@ enum InnovaWalletRestAPI: RestAPIProtocol {
     case sentInnova(to: String, amount: Double, pincode: String, comment: String?)
     case pendingTransactionList(page: Int, size: Int)
     case delete(id: String)
+    case transaction(txid: String)
     
     var method: String {
         switch self {
@@ -58,6 +59,8 @@ enum InnovaWalletRestAPI: RestAPIProtocol {
             return "/wallet/account/transaction_requests/pending"
         case .transactions:
             return "/wallet/account/transactions"
+        case .transaction(let txid):
+            return "/wallet/account/transactions/\(txid)"
         }
     }
     
@@ -93,6 +96,8 @@ enum InnovaWalletRestAPI: RestAPIProtocol {
             return "Request pending transactions list"
         case .transactions:
             return "Request all transactions list"
+        case .transaction(let txid):
+            return "Request info fro transaction: \(txid)"
         case .delete(let id):
             return "Try delete transaction with id: \(id)"
         }

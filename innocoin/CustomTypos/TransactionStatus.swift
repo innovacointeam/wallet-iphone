@@ -42,7 +42,7 @@ enum TransactionStatus {
         case .pending:
             return UIColor.placeholderTextColor
         case .accepted:
-            return UIColor.yellow
+            return UIColor.startButtonGradient
         case .confirmed:
             return UIColor.greenInnova
         }

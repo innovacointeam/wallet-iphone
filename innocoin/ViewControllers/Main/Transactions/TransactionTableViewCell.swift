@@ -37,6 +37,12 @@ class TransactionTableViewCell: UITableViewCell {
         amountLabel.layer.cornerRadius = 5
         amountLabel.clipsToBounds = true
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        transaction = nil
+        pending = nil
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

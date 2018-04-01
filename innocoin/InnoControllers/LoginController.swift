@@ -74,8 +74,8 @@ class LoginController {
                 self.email = email
                 self.password = password
                 completion(true, nil)
-            case .error(let reason, let code):
-                completion(false, "\(code ?? 0): \(reason ?? "Unknown reasons")")
+            case .error(let reason, _):
+                completion(false, "\(reason ?? "Unknown reasons")")
                 self.email = nil
                 self.password = nil
             }
@@ -88,8 +88,8 @@ class LoginController {
             case .success(let data, _):
                 UserController.shared.profile = try? JSONDecoder().decode(SignUpResult.self, from: data).result
                 completion(true, nil)
-            case .error(let reason, let code):
-                completion(false, "\(code ?? 0): \(reason ?? "Unknown reasons")")
+            case .error(let reason, _):
+                completion(false, "\(reason ?? "Unknown reasons")")
             }
         }
     }

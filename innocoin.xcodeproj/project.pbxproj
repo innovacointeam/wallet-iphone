@@ -98,6 +98,7 @@
 		DADA09F02047E68A00A9A86A /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA09EF2047E68A00A9A86A /* AlertViewController.swift */; };
 		DADE300D20528AA500F30976 /* ChangePasswordControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */; };
 		DADE300F20528FD700F30976 /* ChangePasswordViewController+Pincode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */; };
+		DADFEE78206D7F3100E9E010 /* TXTransactionReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADFEE77206D7F3100E9E010 /* TXTransactionReponse.swift */; };
 		DAE56FB92058030C00EDBB49 /* InnovaPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */; };
 		DAF0B2FB203DB5D30061000F /* InnocoinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */; };
 		DAF0B300203DB5D30061000F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0B2FE203DB5D30061000F /* Main.storyboard */; };
@@ -201,6 +202,7 @@
 		DADA09EF2047E68A00A9A86A /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		DADE300C20528AA500F30976 /* ChangePasswordControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordControllerType.swift; sourceTree = "<group>"; };
 		DADE300E20528FD700F30976 /* ChangePasswordViewController+Pincode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController+Pincode.swift"; sourceTree = "<group>"; };
+		DADFEE77206D7F3100E9E010 /* TXTransactionReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TXTransactionReponse.swift; sourceTree = "<group>"; };
 		DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnovaPriceResponse.swift; sourceTree = "<group>"; };
 		DAF0B2F7203DB5D30061000F /* innocoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = innocoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF0B2FA203DB5D30061000F /* InnocoinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnocoinApp.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				DAE56FB82058030C00EDBB49 /* InnovaPriceResponse.swift */,
 				DA9BF9AF205D1E31008760DC /* InnovaTransactionsResponse.swift */,
+				DADFEE77206D7F3100E9E010 /* TXTransactionReponse.swift */,
 				DAC6A28C205E8C9800B6D95E /* InnovaWalletResponse.swift */,
 				DAC6A28F205E8CF800B6D95E /* InnovaResponseError.swift */,
 				DA3F7F252064046800097B60 /* TokenData.swift */,
@@ -668,6 +671,7 @@
 				DA81A7F0205BB3EA0042CD2F /* InnovaConstants.swift in Sources */,
 				DA906D9120654A1400667863 /* PinCodeViewControllerDelegate.swift in Sources */,
 				DA9BF9B0205D1E31008760DC /* InnovaTransactionsResponse.swift in Sources */,
+				DADFEE78206D7F3100E9E010 /* TXTransactionReponse.swift in Sources */,
 				DA393358203EC1380079750C /* UITextField+extension.swift in Sources */,
 				DA5DE6752044C8A500E8951E /* PincodeViewController.swift in Sources */,
 				DA5C0259205156D2003223BD /* RouterViewControllers.swift in Sources */,

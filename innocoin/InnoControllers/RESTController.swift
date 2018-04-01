@@ -32,6 +32,8 @@ class RESTController: NSObject {
         return reachability.connection != .none
     }
     
+    var startPage = 0
+    
     deinit {
         debugPrint("REST Controller deinit")
     }
@@ -45,7 +47,7 @@ class RESTController: NSObject {
             guard error == nil,
                 let data = data,
                 let httpResponse = response as? HTTPURLResponse else {
-                    completion(.error(reason: error?.localizedDescription, code: 0))
+                    completion(.error(reason: error?.localizedDescription, title: "Server error"))
                 return
             }
             debugPrint("Get question list from server")
@@ -109,7 +111,7 @@ class RESTController: NSObject {
             guard error == nil,
                 let data = data,
                 let httpResponse = response as? HTTPURLResponse else {
-                    completion(.error(reason: error?.localizedDescription, code: 0))
+                    completion(.error(reason: error?.localizedDescription, title: "Server error"))
                     return
             }
             #if DEBUG
@@ -121,7 +123,7 @@ class RESTController: NSObject {
                 completion(.success(data: data, code: httpResponse.statusCode))
             } else {
                 let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)
-                completion(.error(reason: responseError?.error.reason, code: httpResponse.statusCode))
+                completion(.error(reason: responseError?.error.reason, title: httpResponse.statusCode == 500 ? "Server Error" : "User Error"))
             }
         }
         task.resume()
@@ -129,7 +131,7 @@ class RESTController: NSObject {
     
     func call(_ rest: RestAPIProtocol, completion: @escaping (ServerResponse)->()) {
         guard reachability.connection != .none else {
-            completion(.error(reason: "Internet connection unreachable. Please check you settings", code: 1100))
+            completion(.error(reason: "Internet connection unreachable. Please check you settings", title: "Internet Error"))
             return
         }
         debugPrint(rest)
@@ -137,7 +139,7 @@ class RESTController: NSObject {
             guard error == nil,
                 let data = data,
                 let httpResponse = response as? HTTPURLResponse else {
-                    completion(.error(reason: error?.localizedDescription, code: 0))
+                    completion(.error(reason: error?.localizedDescription, title: "Server Error"))
                     return
             }
             #if DEBUG
@@ -148,12 +150,12 @@ class RESTController: NSObject {
             case 200..<300:
                 completion(.success(data: data, code: httpResponse.statusCode))
             case 401:
-                completion(.error(reason: "Authorisation token expired.", code: 401))
+                completion(.error(reason: "Authorisation token expired.", title: "User Error"))
                 // Try to login one more time
                 LoginController.shared.tokenExpired()
             default:
                 let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)
-                completion(.error(reason: responseError?.error.reason, code: httpResponse.statusCode))
+                completion(.error(reason: responseError?.error.reason, title: httpResponse.statusCode == 500 ? "Server Error" : "User Error"))
             }
         }
         task.resume()

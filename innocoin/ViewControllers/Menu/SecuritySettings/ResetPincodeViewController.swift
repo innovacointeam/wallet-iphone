@@ -117,8 +117,8 @@ class ResetPincodeViewController: UIViewController {
                 self?.navigationController?.isNavigationBarHidden = false
                 
                 switch response {
-                case .error(let reason, let code):
-                    self?.showAlert("\(code ?? 0): \(reason ?? "Unknown")", title: "Reset Pincode")
+                case .error(let reason, let title):
+                    self?.showAlert("\(reason ?? "Unknown")", title: title ?? "Reset Pincode")
                 case .success(let data, _):
                     if let serverMessage = try? JSONDecoder().decode(MessageResult.self, from: data).result.message {
                         self?.showAlert(serverMessage, title: "Reset Pincode") {

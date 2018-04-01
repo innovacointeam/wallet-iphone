@@ -30,8 +30,8 @@ class VerifyTokenViewController: UIViewController {
         RESTController.shared.verify() { [weak self] response in
             DispatchQueue.main.async {
                 switch response {
-                case .error(let reason, let code):
-                    self?.showAlert("\(code ?? 0): \(reason ?? "Unknown error")", title: "Innova") {
+                case .error(let reason, let title):
+                    self?.showAlert(" \(reason ?? "Unknown error")", title: title ?? "Innova") {
                         self?.sendVerifyButton.isEnabled = true
                     }
                 case .success:

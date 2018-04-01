@@ -10,11 +10,11 @@ import Foundation
 
 enum ServerResponse: Equatable {
     
-    case error(reason: String?, code: Int?)
+    case error(reason: String?, title: String?)
     case success(data: Data, code: Int)
     
     var isSuccess: Bool {
-        return self == .error(reason: "", code: 0)
+        return self == .error(reason: "", title: "")
     }
     
     static func ==(lhs: ServerResponse, rhs: ServerResponse) -> Bool {

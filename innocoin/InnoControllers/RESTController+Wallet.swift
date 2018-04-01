@@ -17,6 +17,13 @@ extension RESTController {
         }
     }
     
+    func update(txid: String, completion: ((ServerResponse)->())?) {
+        let rest = InnovaWalletRestAPI.transaction(txid: txid)
+        call(rest) { response in
+            completion?(response)
+        }
+    }
+    
     func delete(txid: String, completion: ((ServerResponse)->())?) {
         let rest = InnovaWalletRestAPI.delete(id: txid)
         call(rest) { response in
@@ -31,8 +38,8 @@ extension RESTController {
                 completion?()
             }
             switch response {
-            case .error(let reason, let code):
-                debugPrint("Server answer error: \(code ?? 0): \(reason ?? "Unknow")")
+            case .error(let reason, _):
+                debugPrint("Server answer error: \(reason ?? "Unknow")")
             case .success(let data, _):
                 do {
                     if let wallet = try JSONDecoder().decode(InnovaWalletResponse.self, from: data).wallet {
@@ -65,14 +72,14 @@ extension RESTController {
                 completion?()
             }
             switch response {
-            case .error(let reason, let code):
-                debugPrint("Server answer error: \(code ?? 0): \(reason ?? "Unknow")")
+            case .error(let reason, _):
+                debugPrint("Server answer error: \(reason ?? "Unknow")")
             case .success(let data, _):
                 do {
                     if let pending = try JSONDecoder().decode(PendingTransactionResponse.self, from: data).transactions {
                        UserController.shared.pending = pending
                         // Save data to using before loaded
-                        DataManager.shared.lastPending = data
+                       DataManager.shared.lastPending = data
                     }
                 } catch let error as DecodingError {
                     debugPrint(error)
@@ -90,12 +97,19 @@ extension RESTController {
                 completion?()
             }
             switch response {
-            case .error(let reason, let code):
-                debugPrint("Server answer error: \(code ?? 0): \(reason ?? "Unknow")")
+            case .error(let reason, _):
+                debugPrint("Server answer error: \(reason ?? "Unknow")")
             case .success(let data, _):
                 do {
                     let sended = try JSONDecoder().decode(InnovaTransactionsResponse.self, from: data).transactions
                     DataManager.shared.update(transactions: sended)
+                    // if hase previous transaction - query it
+                    if sended.count == 10 {
+                        self.startPage += 1
+                        DispatchQueue.global(qos: .utility).async {
+                            RESTController.shared.queryTransactionsList(page: self.startPage, size: 10, completion: nil)
+                        }
+                    }
                 } catch let error as DecodingError {
                     debugPrint(error)
                 } catch let error as NSError {
@@ -112,8 +126,8 @@ extension RESTController {
                 completion?()
             }
             switch response {
-            case .error(let reason, let code):
-                debugPrint("Server answer error: \(code ?? 0): \(reason ?? "Unknow")")
+            case .error(let reason, _):
+                debugPrint("Server answer error: \(reason ?? "Unknow")")
             case .success(let data, _):
                 do {
                     let sended = try JSONDecoder().decode(InnovaTransactionsResponse.self, from: data).transactions
@@ -134,8 +148,8 @@ extension RESTController {
                 completion?()
             }
             switch response {
-            case .error(let reason, let code):
-                debugPrint("Server answer error: \(code ?? 0): \(reason ?? "Unknow")")
+            case .error(let reason, _):
+                debugPrint("Server answer error: \(reason ?? "Unknow")")
             case .success(let data, _):
                 do {
                     let received = try JSONDecoder().decode(InnovaTransactionsResponse.self, from: data).transactions
