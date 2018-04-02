@@ -82,9 +82,9 @@ class PreviewContactViewController: UIViewController {
         }
         DataManager.shared.selectedAddressToSend = address
         tabBarController?.selectedIndex = 0
-        print(address)
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
         
-        //self.dismissViewControllrAnimated(false, completion: {});
     }
     
     
