@@ -16,10 +16,9 @@ final class DataManager {
 
     private let modelName = "innova"
     
-    public var selectedAddressToSend: String = ""
-    
     private let walletJSONKey = "com.innova.WalletJSON"
     private let pendingJSONKey = "com.innova.PendingJSON"
+    private let sequrityQuestionJSON = "com.innova.SequrityQuestionsJSON"
     
     var lastPending: Data? {
         get {
@@ -47,6 +46,19 @@ final class DataManager {
         }
     }
     
+    var sequrityQuestion: Data? {
+        get {
+            return UserDefaults.standard.data(forKey: sequrityQuestionJSON)
+        }
+        set {
+            guard let data = sequrityQuestion else {
+                return
+            }
+            UserDefaults.standard.set(data, forKey: sequrityQuestionJSON)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     private(set) lazy var context: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
@@ -63,12 +75,15 @@ final class DataManager {
         return model
     }()
     
-    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+    private lazy var coordinatorURL: URL = {
         let fileManager = FileManager.default
         let sqlName = "\(self.modelName).sqlite"
         let documentDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let coordinatorURL = documentDirectoryURL.appendingPathComponent(sqlName)
+        return documentDirectoryURL.appendingPathComponent(sqlName)
+    }()
+    
+    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         do {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType,
                                                configurationName: nil,
@@ -91,7 +106,24 @@ final class DataManager {
                 debugPrint("Save CoreData failed: \(error.localizedFailureReason ?? error.localizedDescription)")
             }
         }
-
     }
     
+    func clear() {
+        do {
+            let store = persistentStoreCoordinator.persistentStores[0]
+            try persistentStoreCoordinator.remove(store)
+            try addCoordinator()
+        } catch let error {
+            debugPrint(error)
+        }
+        UserDefaults.standard.removeObject(forKey: walletJSONKey)
+        UserDefaults.standard.removeObject(forKey: pendingJSONKey)
+    }
+    
+    private func addCoordinator() throws {
+        try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+                                                          configurationName: nil,
+                                                          at: coordinatorURL,
+                                                          options: nil)
+    }
 }

@@ -8,6 +8,32 @@
 
 import Foundation
 
+struct UserProfileResponse: Decodable {
+    let error: InnovaResponseErrror?
+    let profile: UserProfile?
+    
+    enum CodingKeys: String, CodingKey {
+        case error
+        case result
+    }
+    
+    enum UserKeys: String, CodingKey {
+        case user
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        error  = try values.decodeIfPresent(InnovaResponseErrror.self, forKey: .error)
+        if values.contains(.result) {
+            let result = try values.nestedContainer(keyedBy: UserKeys.self, forKey: .result)
+            profile = try result.decode(UserProfile.self, forKey: .user)
+        } else {
+            profile = nil
+        }
+    }
+}
+
+
 struct UserName: Codable {
     var firstName: String
     var lastName: String
@@ -55,7 +81,5 @@ struct UserProfile: Codable {
     }
 }
 
-struct UserProfileResult: Codable {
-    var result: UserProfile
-}
+
 

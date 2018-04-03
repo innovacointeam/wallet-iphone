@@ -20,32 +20,23 @@ protocol PincodeViewControllerDelegate {
 extension PincodeViewControllerDelegate where Self: UIViewController {
     
     func createPincodeContainer() -> UIView {
-        let size = PincodeViewController.pefferedSize
-        let frame = CGRect(origin: CGPoint.zero, size: size)
-        let container = UIView(frame: frame)
-        container.center = view.center
+        let container = UIView(frame: CGRect(origin: CGPoint.zero, size: PincodeViewController.pefferedSize))
         view.addSubview(container)
-        let centerX = NSLayoutConstraint(item: container,
-                                         attribute: .centerX,
-                                         relatedBy: .equal,
-                                         toItem: view,
-                                         attribute: .centerX,
-                                         multiplier: 1,
-                                         constant: 0)
         
-        let centerY = NSLayoutConstraint(item: container,
-                                         attribute: .centerY,
-                                         relatedBy: .equal,
-                                         toItem: view,
-                                         attribute: .centerY,
-                                         multiplier: 1,
-                                         constant: 0)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        container.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        container.heightAnchor.constraint(equalToConstant: PincodeViewController.pefferedSize.height).isActive = true
+        container.widthAnchor.constraint(equalToConstant: PincodeViewController.pefferedSize.width).isActive = true
         
-        view.addConstraints([centerX, centerY])
-        centerY.isActive = true
-        centerX.isActive = true
+        view.layoutIfNeeded()
         
-        container.layoutIfNeeded()
+        container.layer.shadowColor = UIColor.placeholderTextColor.cgColor
+        container.layer.shadowRadius = 10
+        container.layer.shadowOpacity = 0.6
+        container.layer.shadowOffset = CGSize(width: 3, height: 3)
+        container.layer.masksToBounds = false
+        container.backgroundColor = UIColor.clear
         
         return container
     }

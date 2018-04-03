@@ -21,7 +21,6 @@ class EditContactViewController: UIViewController {
         super.viewDidLoad()
 
         hideKeyboard()
-        createButton.applyTheme()
         
         fullNameField.delegate = self
         innovaAddressField.delegate = self
@@ -41,6 +40,11 @@ class EditContactViewController: UIViewController {
         }
     }
   
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        createButton.applyTheme()
+    }
+    
     @IBAction func createContactTapped(_ sender: Any) {
         guard let name = fullNameField.text, !name.isEmpty else {
                 showAlert("Contact name must be not empty", title: "Add contact")
@@ -48,12 +52,12 @@ class EditContactViewController: UIViewController {
         }
         
         #if DEBUG
-            guard let wallet = innovaAddressField.text, wallet.count >= 25 else {
+            guard let wallet = innovaAddressField.text, !wallet.isEmpty else {
                 showAlert("Innova wallet must be correct lenght", title: "Add contact")
                 return
             }
         #else
-            guard let wallet = innovaAddressField.text, wallet.count <= 35 else {
+            guard let wallet = innovaAddressField.text, wallet.count == 45 else {
                 showAlert("Innova wallet must be correct lenght", title: "Add contact")
                 return
             }

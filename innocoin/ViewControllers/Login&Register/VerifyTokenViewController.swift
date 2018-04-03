@@ -16,13 +16,17 @@ class VerifyTokenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendVerifyButton.applyTheme()
         view.backgroundColor = UIColor.backgroundViewController
         
         let ok = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(backToLogin))
         navigationItem.rightBarButtonItem = ok
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.title = "Verify Account"
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        sendVerifyButton.applyTheme()
     }
     
     @IBAction func sendVerifyTapped(_ sender: Any) {

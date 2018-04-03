@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class ContactsTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -85,6 +86,17 @@ class ContactsTableViewController: UITableViewController {
         RouterViewControllers.shared.preview(contact: fetchController.object(at: indexPath))
     }
     
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] _ , indexPath in
+            if let contact = self?.fetchController.object(at: indexPath) {
+                DataManager.shared.delete(contact: contact)
+            }
+        }
+        return [delete]
+    }
+    
+    @available(iOS 11.0, *)
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contact = fetchController.object(at: indexPath)
         let delete = UIContextualAction(style: .destructive, title: "") { [weak self] action, source, completion in

@@ -15,9 +15,13 @@ class EmptyTransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        receivedInnovaButton.applyTheme()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        receivedInnovaButton.applyTheme()
+    }
+    
     @IBAction func receiveButtonTapped(_ sender: Any) {
         innovaApp?.mainTabBar?.selectedIndex = 3
     }

@@ -54,8 +54,6 @@ class SendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         origin = view.frame.origin.y
-        receiverField.insertText(DataManager.shared.selectedAddressToSend)
-        DataManager.shared.selectedAddressToSend = ""
     }
     
     private func registerForKeyboardNotifcation() {
@@ -184,6 +182,11 @@ extension SendViewController: UITextFieldDelegate, CurrencyTextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeTextField = textField
+        
+        if pincodeController != nil {
+            remove(chield: pincodeController)
+            pincodeContainer.removeFromSuperview()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -220,8 +223,10 @@ extension SendViewController: PincodeViewControllerDelegate {
                 case .error(let reason, let title):
                     self?.showAlert("\(reason ?? "Unknown")", title: title ?? "Innova")
                 case .success(let data, _):
-                    if let message = try? JSONDecoder().decode(MessageResult.self, from: data).result.message {
-                        self?.showAlert(message, title: "Send Innova") {
+                    if let request = try? JSONDecoder().decode(PendingTransactionResponse.self, from: data),
+                        let pending =  request.request {
+                        UserController.shared.pending.insert(pending, at: 0)
+                        self?.showAlert("Put request to send innova on server", title: "Innova") {
                             self?.innovaApp?.mainTabBar?.setTransactions()
                         }
                     } else {

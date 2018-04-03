@@ -12,7 +12,8 @@ class ResetPasswordFinishViewController: UIViewController {
 
     @IBOutlet weak var gotoSigninButton: UIButton!
 
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         gotoSigninButton.applyTheme()
     }
     

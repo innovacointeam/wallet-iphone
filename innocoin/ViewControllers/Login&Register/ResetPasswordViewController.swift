@@ -60,7 +60,6 @@ class ResetPasswordViewController: UIViewController {
         hideKeyboard()
         
         view.backgroundColor = UIColor.backgroundViewController
-        resetButton.applyTheme()
         errorLabel.textColor = UIColor.errorMessage
         popupContainer.isHidden = true
         popupContainer.layer.cornerRadius = 10
@@ -91,6 +90,8 @@ class ResetPasswordViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        resetButton.applyTheme()
         
         var frame = CGRect.zero
         frame.origin = questionButton.convert(questionButton.frame.origin, to: view)

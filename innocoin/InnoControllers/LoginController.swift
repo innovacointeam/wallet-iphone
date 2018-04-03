@@ -16,10 +16,30 @@ class LoginController {
     var questions = [String]()
     private var atemptToRenowalToken = false
     
-    private var email: String!
+    static let EmailLoginKey = "com.innova.emaillogin.key"
+    private var email: String! {
+        didSet {
+            guard email != nil else {
+                return
+            }
+            UserDefaults.standard.set(email, forKey: LoginController.EmailLoginKey)
+            UserDefaults.standard.synchronize()
+            if oldValue != nil, oldValue != email {
+                DataManager.shared.clear()
+            }
+        }
+    }
     private var password: String!
     
-    private init() { }
+    private init() {
+        email = UserDefaults.standard.string(forKey: LoginController.EmailLoginKey)
+        
+        if let data = DataManager.shared.sequrityQuestion {
+            if let list = try? JSONDecoder().decode(QuestionListResponse.self, from: data) {
+                questions = list.result.questions
+            }
+        }
+    }
     
     func getQuestions() {
         RESTController.shared.getQuestions() { (response: ServerResponse)in
@@ -28,7 +48,7 @@ class LoginController {
                 do {
                     let questionsList = try JSONDecoder().decode(QuestionListResponse.self, from: data)
                     self.questions = questionsList.result.questions
-                    debugPrint("QuestionsList count \(questionsList.result.questions.count)")
+                    DataManager.shared.sequrityQuestion = data
                 } catch let error as NSError {
                     debugPrint("Encodable error \(error.localizedFailureReason ?? error.localizedDescription)")
                 }
@@ -76,8 +96,8 @@ class LoginController {
                 completion(true, nil)
             case .error(let reason, _):
                 completion(false, "\(reason ?? "Unknown reasons")")
-                self.email = nil
-                self.password = nil
+//                self.email = nil
+//                self.password = nil
             }
         }
     }

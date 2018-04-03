@@ -52,9 +52,10 @@ class SettingsTableViewController: UITableViewController {
             showAlert("\(reason ?? "Unknown")", title: title ?? "Update Error")
         case .success(let data, _):
             do {
-                let profile = try JSONDecoder().decode(UserProfileResult.self, from: data)
-                UserController.shared.profile = profile.result
-                populateUser()
+                if let profile = try JSONDecoder().decode(UserProfileResponse.self, from: data).profile {
+                    UserController.shared.profile = profile
+                    populateUser()
+                }
             } catch let error as DecodingError {
                 debugPrint("Decoding error: \(error.failureReason ?? error.localizedDescription)")
             } catch let errror as NSError {

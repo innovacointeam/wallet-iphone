@@ -146,6 +146,7 @@ class TransactionTableViewController: UITableViewController {
         return true
     }
     
+    @available(iOS 11.0, *)
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let cell = tableView.cellForRow(at: indexPath) as? TransactionTableViewCell,
             let pending = cell.pending else {
@@ -172,6 +173,28 @@ class TransactionTableViewController: UITableViewController {
         delete.image = #imageLiteral(resourceName: "trashIcon")
         delete.backgroundColor = UIColor.redInnova
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let cell = tableView.cellForRow(at: indexPath) as? TransactionTableViewCell, cell.pending != nil else {
+                return nil
+        }
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { _ , indexPath in
+            // get pending one more time to delete it
+            guard let cell = tableView.cellForRow(at: indexPath) as? TransactionTableViewCell,
+                let pending = cell.pending else {
+                    return
+            }
+            RESTController.shared.delete(txid: pending.id) { response in
+                if case  ServerResponse.success(nil, 0) = response {
+                    UserController.shared.pending = UserController.shared.pending.filter() { $0.id != pending.id }
+                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.fetchTransactions()
+                }
+            }
+        }
+        return [delete]
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

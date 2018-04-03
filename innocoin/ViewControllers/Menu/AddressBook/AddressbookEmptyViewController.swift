@@ -15,12 +15,16 @@ class AddressbookEmptyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addContactButton.applyTheme()
+        
         view.backgroundColor = UIColor.backgroundViewController
         navigationItem.title = "Address Book"
         navigationItem.backBarButtonItem?.title = ""
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addContactButton.applyTheme()
+    }
 
     @IBAction func addContactTapped(_ sender: Any) {
         RouterViewControllers.shared.openAddContact()

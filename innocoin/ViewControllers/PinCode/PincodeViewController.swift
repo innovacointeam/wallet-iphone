@@ -27,8 +27,11 @@ class PincodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.layer.borderColor = UIColor.settingsTintColor.cgColor
+        view.layer.borderWidth = 1.0
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
     }
 
     override func viewWillAppear(_ animated: Bool) {

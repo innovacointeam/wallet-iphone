@@ -27,12 +27,11 @@ class ReceiveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestPaymentButton.applyTheme()
-        
+       
         hideKeyboard()
         
         let longTap = UILongPressGestureRecognizer(target: self, action: #selector(copyQRCode(_:)))
-        longTap.minimumPressDuration = 1.5
+        longTap.minimumPressDuration = 1.0
         qrCode.isUserInteractionEnabled = true
         qrCode.addGestureRecognizer(longTap)
         walletLabel.text = UserController.shared.account?.address ?? UserController.shared.walletID
@@ -55,6 +54,11 @@ class ReceiveViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         origin = view.frame.origin.y
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        requestPaymentButton.applyTheme()
     }
     
     deinit {
