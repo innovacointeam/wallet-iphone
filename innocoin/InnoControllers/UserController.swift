@@ -34,7 +34,8 @@ class UserController {
                 timer = nil
             }
             
-            let period = validData.timeIntervalSince1970 - Date().timeIntervalSince1970
+            let period = validData.timeIntervalSince1970 - Date().timeIntervalSince1970 - 180
+            debugPrint("Set timer for: \(period)")
             timer = Timer.scheduledTimer(withTimeInterval: period, repeats: false, block: { _ in
                 LoginController.shared.tokenExpired()
             })

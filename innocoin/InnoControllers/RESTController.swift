@@ -57,77 +57,54 @@ class RESTController: NSObject {
     }
     
     func price(completion: @escaping (ServerResponse)->()) {
-        send(RestApi.price, completion: completion)
+        call(RestApi.price, completion: completion)
     }
     
     func makeAnonymous(completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.setAnonymous
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func makePublic(completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.setPublic
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func resetPassword(email: String, question: String, answer: String, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.resetPassword(email: email, question: question, answer: answer)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func resetPincode(question: String, answer: String, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.resetPincode(question: question, answer: answer)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func changePassword(pincode: String, password: String, newPassword: String, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.changePassword(pincode: pincode, password: password, newPassword: newPassword)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func changePincode(password: String, pincode: String, newPincode: String, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.changePincode(password: password, pincode: pincode, newPincode: newPincode)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func signin(email: String, password: String, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.signin(email: email, password: password)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func signup(user: SignUpUser, completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.signup(user: user)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
     func  verify(completion: @escaping (ServerResponse)->()) {
         let rest = RestApi.verifyToken(email: UserController.shared.profile.email)
-        send(rest, completion: completion)
+        call(rest, completion: completion)
     }
     
-    private func send(_ rest: RestApi, completion: @escaping (ServerResponse)->()) {
-        debugPrint("\(rest.description): \(rest.debugDescription)")
-        let task = session.dataTask(with: rest.urlRequest) { data, response, error in
-            guard error == nil,
-                let data = data,
-                let httpResponse = response as? HTTPURLResponse else {
-                    completion(.error(reason: error?.localizedDescription, title: "Server error"))
-                    return
-            }
-            #if DEBUG
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                    debugPrint("\(rest.description) answer: \(json)")
-                }
-            #endif
-            if httpResponse.statusCode == rest.statusCode {
-                completion(.success(data: data, code: httpResponse.statusCode))
-            } else {
-                let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)
-                completion(.error(reason: responseError?.error.reason, title: httpResponse.statusCode == 500 ? "Server Error" : "User Error"))
-            }
-        }
-        task.resume()
-    }
     
     func call(_ rest: RestAPIProtocol, completion: @escaping (ServerResponse)->()) {
         guard reachability.connection != .none else {
@@ -144,15 +121,22 @@ class RESTController: NSObject {
             }
             #if DEBUG
                 let jsonString = String(data: data, encoding: .utf8)
-                debugPrint("Raw json answer: \(jsonString ?? "")")
+                debugPrint("\(rest.description) answer: \(jsonString ?? "")")
             #endif
             switch httpResponse.statusCode {
             case 200..<300:
                 completion(.success(data: data, code: httpResponse.statusCode))
             case 401:
-                completion(.error(reason: "Authorisation token expired.", title: "User Error"))
-                // Try to login one more time
-                LoginController.shared.tokenExpired()
+                // First check err code
+                if let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+                    if responseError.error.error_code == 4011 {
+                        completion(.error(reason: "Authorisation token expired.", title: "User Error"))
+                        // Try to login one more time
+                        LoginController.shared.tokenExpired()
+                    } else {
+                        completion(.error(reason: responseError.error.reason, title: "User Error"))
+                    }
+                }
             default:
                 let responseError = try? JSONDecoder().decode(ErrorResponse.self, from: data)
                 completion(.error(reason: responseError?.error.reason, title: httpResponse.statusCode == 500 ? "Server Error" : "User Error"))

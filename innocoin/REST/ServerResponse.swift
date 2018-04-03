@@ -34,4 +34,5 @@ struct ErrorResponse: Codable {
 
 struct ErrorReason: Codable {
     var reason: String
+    var error_code: Int?
 }

@@ -8,8 +8,12 @@
 
 import Foundation
 
-enum RestApi {
+enum RestApi: RestAPIProtocol {
     
+    var queryItems: [URLQueryItem]? {
+        return nil
+    }
+
     case questionsList
     case signin(email: String, password: String)
     case signup(user: SignUpUser)
@@ -43,117 +47,74 @@ enum RestApi {
         }
     }
     
-    private var path: String {
+    var path: String {
         switch self {
         case .questionsList:
-            return "signup/security_questions"
+            return "/signup/security_questions"
         case .signup:
-            return "signup"
+            return "/signup"
         case .signin:
-            return "login"
+            return "/login"
         case .resetPassword:
-            return "users/profile/password_recovery"
+            return "/users/profile/password_recovery"
         case .resetPincode:
-            return  "users/profile/pincode_recovery"
+            return  "/users/profile/pincode_recovery"
         case .verifyToken:
-            return "signup/verifytoken/send"
+            return "/signup/verifytoken/send"
         case .profile(let id):
-            return "users/\(id)"
+            return "/users/\(id)"
         case .changePassword:
-            return "users/profile/password"
+            return "/users/profile/password"
         case .changePincode:
-            return "users/profile/pincode"
+            return "/users/profile/pincode"
         case .setAnonymous:
-            return "users/profile/anonymous"
+            return "/users/profile/anonymous"
         case .setPublic:
-            return "users/profile/public"
+            return "/users/profile/public"
         case .price:
-            return "market/price"
+            return "/market/price"
         }
     }
     
-    private var param: Data? {
+    var param: Parameters {
+        var json = Parameters()
         switch self {
         case .signup(let user):
-            do {
-                return try JSONEncoder().encode(user)
-            } catch let error as NSError {
-                debugPrint("Failed codable signup: \(error.localizedFailureReason ?? error.localizedDescription)")
-                return nil
-            }
+            json["email"] = user.email
+            json["password"] = user.password
+            json["pincode"] = user.pincode
+            json["security_question"] = [
+                "question": user.securityQuestion.question,
+                "answer": user.securityQuestion.answer
+                ] as Parameters
         case .signin(let email, let password):
-            let json = [
-                "email": email,
-                "password": password
-            ]
-            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            json["email"] = email
+            json["password"] = password
         case .resetPassword(let email, let question, let answer):
-            let json = [
-                "email": email,
-                "security_question": [
+            json["email"] = email
+            json["security_question"] = [
                     "question": question,
                     "answer": answer
-                    ] as [String : Any]
-            ] as [String: Any]
-            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+                    ] as Parameters
         case .resetPincode(let question, let answer):
-            let json = [
-                "security_question": [
+            json["security_question"] = [
                     "question": question,
                     "answer": answer
-                    ] as [String : Any]
-            ] as [String: Any]
-            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+                    ] as Parameters
         case .verifyToken(let email):
-            let json = [
-                "email": email
-            ]
-            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            json["email"] = email
         case .changePassword(let pincode, let password, let newPassword):
-            let json = [
-                "current_password": password,
-                "pincode": pincode,
-                "new_password": newPassword
-            ]
-            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            json["current_password"] = password
+            json["pincode"] = pincode
+            json["new_password"] = newPassword
         case .changePincode(let password, let pincode, let newPincode):
-            let json = [
-                "current_pincode": pincode,
-                "new_pincode": newPincode,
-                "password": password
-            ]
-            return try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            json["current_pincode"] = pincode
+            json["new_pincode"] = newPincode
+            json["password"] = password
         default:
-            return nil
+            break
         }
-    }
-    
-    var statusCode: Int {
-        switch self {
-        case .verifyToken:
-            return 202
-        default:
-            return 200
-        }
-    }
-    
-    var url: URL {
-        return InnovaConstanst.innoHost.appendingPathComponent(self.path)
-    }
-    
-    var urlRequest: URLRequest {
-        var request = URLRequest(url: self.url)
-        request.timeoutInterval = InnovaConstanst.defaultTimeoutInterval
-        if self.method != "GET" {
-            request.setValue("application/json; charset=utf8", forHTTPHeaderField: "Content-Type")
-            if let token = UserController.shared.token {
-                let bearer = "Bearer \(token)"
-                request.setValue(bearer, forHTTPHeaderField: "Authorization")
-            }
-        }
-        request.httpMethod = self.method
-        request.httpBody = self.param
-        return request
+        return json
     }
 }
 
@@ -186,15 +147,5 @@ extension RestApi: CustomDebugStringConvertible, CustomStringConvertible {
         case .price:
             return "Request market Innova price"
         }
-    }
-    
-    var debugDescription: String {
-        let paramStr = param != nil ? String(data: param!, encoding: .utf8)! : "NULL"
-        let text = """
-            URL for request: \(self.url.absoluteString)
-            Method: \(self.method)
-            With param: \(paramStr)")
-        """
-        return text
     }
 }

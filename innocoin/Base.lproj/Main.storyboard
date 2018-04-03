@@ -1187,7 +1187,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qv-U2-PbF">
-                                <rect key="frame" x="44.5" y="473" width="285" height="50"/>
+                                <rect key="frame" x="44.5" y="455.5" width="285" height="50"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.19607843137254902" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Hfq-Ls-QMQ"/>
@@ -1215,7 +1215,7 @@
                             <constraint firstItem="OGh-vJ-nj9" firstAttribute="centerX" secondItem="0K1-vp-Nuv" secondAttribute="centerX" id="gXE-98-8Sr"/>
                             <constraint firstItem="0Qv-U2-PbF" firstAttribute="centerX" secondItem="0K1-vp-Nuv" secondAttribute="centerX" id="mi5-H6-gLa"/>
                             <constraint firstItem="gMM-Sv-86f" firstAttribute="top" secondItem="M0d-7n-s7m" secondAttribute="bottom" constant="10" id="o0q-WG-2Fh"/>
-                            <constraint firstAttribute="bottom" secondItem="0Qv-U2-PbF" secondAttribute="bottom" constant="80" id="w8w-cT-ES3"/>
+                            <constraint firstItem="0Qv-U2-PbF" firstAttribute="top" secondItem="PoN-tS-4dF" secondAttribute="bottom" constant="30" id="tCA-Jb-SYT"/>
                             <constraint firstItem="OGh-vJ-nj9" firstAttribute="width" secondItem="0K1-vp-Nuv" secondAttribute="width" multiplier="0.8" id="xWX-Vs-1qa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1dd-nR-3Jh"/>
@@ -2877,7 +2877,7 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwb-BO-vJD">
                                                                     <rect key="frame" x="0.0" y="25.5" width="262.5" height="62.5"/>
-                                                                    <string key="text">If u set your account to anonymous which is default, your account will be hidden. And you will not be able to use our paypal-like-payment features.</string>
+                                                                    <string key="text">If you set your account to anonymous which is default, your account will be hidden. And you will not be able to use our paypal-like-payment features.</string>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" red="0.058823533359999999" green="0.082352928820000004" blue="0.46666663889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
