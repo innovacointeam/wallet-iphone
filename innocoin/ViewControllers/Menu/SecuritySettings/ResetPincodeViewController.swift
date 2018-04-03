@@ -14,6 +14,7 @@ class ResetPincodeViewController: UIViewController {
     @IBOutlet weak var answerField: UITextField!
     @IBOutlet weak var questionButton: UIButton!
     @IBOutlet weak var arrowDownButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     private var questionFrame = CGRect.zero
     private lazy var questionTableView: UIView = {
@@ -44,6 +45,8 @@ class ResetPincodeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        resetButton.applyTheme()
         
         var frame = CGRect.zero
         frame.origin = questionButton.convert(questionButton.frame.origin, to: view)

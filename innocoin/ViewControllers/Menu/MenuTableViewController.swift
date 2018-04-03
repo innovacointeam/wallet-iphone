@@ -40,7 +40,6 @@ class MenuTableViewController: UITableViewController {
             innovaApp?.mainTabBar?.push(controller, animated: false)
         // Share App
         case 2:
-           
            innovaApp?.mainTabBar?.shareInnova()
         // Write to Support
         case 3:

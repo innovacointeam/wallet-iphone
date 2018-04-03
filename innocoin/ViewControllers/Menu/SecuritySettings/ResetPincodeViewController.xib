@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,7 @@
                 <outlet property="arrowDownButton" destination="I5b-qQ-mDS" id="Xv8-0W-gWE"/>
                 <outlet property="buttonsContainer" destination="yIg-DZ-4gj" id="F3u-1k-VvY"/>
                 <outlet property="questionButton" destination="qXS-oG-rJu" id="YLm-Sx-fsW"/>
+                <outlet property="resetButton" destination="fOo-mP-2kL" id="kYr-HP-a7p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -112,6 +113,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-Ox-DhU">
                                     <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                    <color key="tintColor" red="0.93725490199999995" green="0.1960784314" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="Cancel">
                                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -137,7 +139,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.1176470588" green="0.14117647059999999" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.1960784314" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="01T-wW-wYa"/>
                                 <constraint firstItem="ckV-pM-L5q" firstAttribute="leading" secondItem="NVa-Ox-DhU" secondAttribute="trailing" id="2jm-eZ-K3s"/>

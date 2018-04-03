@@ -1955,7 +1955,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="fuN-tm-Kgw">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="fuN-tm-Kgw">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -2867,7 +2867,7 @@
                                                     <rect key="frame" x="20" y="2" width="335" height="101.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M1P-AS-ath">
-                                                            <rect key="frame" x="0.0" y="7" width="262.5" height="88"/>
+                                                            <rect key="frame" x="0.0" y="9.5" width="262.5" height="83"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUi-P4-8RT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="262.5" height="20.5"/>
@@ -2876,7 +2876,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwb-BO-vJD">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="262.5" height="62.5"/>
+                                                                    <rect key="frame" x="0.0" y="25.5" width="262.5" height="57.5"/>
                                                                     <string key="text">If you set your account to anonymous which is default, your account will be hidden. And you will not be able to use our paypal-like-payment features.</string>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" red="0.058823533359999999" green="0.082352928820000004" blue="0.46666663889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
