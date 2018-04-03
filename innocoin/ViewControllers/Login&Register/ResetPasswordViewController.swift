@@ -149,16 +149,18 @@ class ResetPasswordViewController: UIViewController {
         let blur = bluring()
         let activity = showActivityIndicatory(in: view, text: "Reset password. Please wait...")
         
-        RESTController.shared.resetPassword(email: email, question: question, answer: answer) { [weak self] response in
-            blur.removeFromSuperview()
-            activity.removeFromSuperview()
-            self?.navigationController?.isNavigationBarHidden = false
-            
-            switch response {
-            case .error(let reason, _):
-                self?.showAlert("\(reason ?? "unknown")", title: "Reset Error")
-            case .success:
-                RouterViewControllers.shared.pop()
+        RESTController.shared.resetPassword(email: email, question: question, answer: answer) { response in
+            DispatchQueue.main.async { [weak self] in
+                activity.removeFromSuperview()
+                blur.removeFromSuperview()
+                self?.navigationController?.isNavigationBarHidden = false
+                
+                switch response {
+                case .error(let reason, _):
+                    self?.showAlert("\(reason ?? "unknown")", title: "Reset Error")
+                case .success:
+                    RouterViewControllers.shared.pop()
+                }
             }
         }
 
