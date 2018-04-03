@@ -47,7 +47,7 @@ class EditContactViewController: UIViewController {
     
     @IBAction func createContactTapped(_ sender: Any) {
         guard let name = fullNameField.text, !name.isEmpty else {
-                showAlert("Contact name must be not empty", title: "Add contact")
+                showAlert("Contact name cannot be empty", title: "Add contact")
                 return
         }
         

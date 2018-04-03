@@ -102,7 +102,7 @@ class SignUpViewController: UIViewController {
             DispatchQueue.main.async {
                 if result {
                     // To after sigup - send back to login becouse need verify account
-                    self?.showAlert("Account created succefull. Please check email to activate", title: "Signup") {
+                    self?.showAlert("Account created successfully. Please check your email to activate", title: "Signup") {
                         self?.navigationController?.popToRootViewController(animated: true)
                     }
                 } else {
