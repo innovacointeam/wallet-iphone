@@ -228,7 +228,7 @@ extension SendViewController: PincodeViewControllerDelegate {
                     if let request = try? JSONDecoder().decode(PendingTransactionResponse.self, from: data),
                         let pending =  request.request {
                         UserController.shared.pending.insert(pending, at: 0)
-                        self?.showAlert("Put request to send innova on server", title: "Innova") {
+                        self?.showAlert("Your transaction request has been accepted", title: "Innova") {
                             self?.innovaApp?.mainTabBar?.setTransactions()
                         }
                     } else {
