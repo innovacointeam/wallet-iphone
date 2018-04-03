@@ -52,13 +52,13 @@ class EditContactViewController: UIViewController {
         }
         
         #if DEBUG
-            guard let wallet = innovaAddressField.text, !wallet.isEmpty else {
-                showAlert("Innova wallet must be correct lenght", title: "Add contact")
+            guard let wallet = innovaAddressField.text, wallet.count >= 25 else {
+                showAlert("Innova address has a wrong length", title: "Add contact")
                 return
             }
         #else
-            guard let wallet = innovaAddressField.text, wallet.count == 45 else {
-                showAlert("Innova wallet must be correct lenght", title: "Add contact")
+            guard let wallet = innovaAddressField.text, wallet.count <= 35 else {
+                showAlert("Innova address has a wrong length", title: "Add contact")
                 return
             }
         #endif

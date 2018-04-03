@@ -17,19 +17,10 @@ class MenuTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return super.tableView(tableView, numberOfRowsInSection: section) - 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let newIndex = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-        return super.tableView(tableView, cellForRowAt: newIndex)
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         innovaApp?.mainTabBar?.hideMenu()
 
-        switch indexPath.row + 1 {
+        switch indexPath.row{
         // Address book
         case 0:
             RouterViewControllers.shared.openAddressBook()

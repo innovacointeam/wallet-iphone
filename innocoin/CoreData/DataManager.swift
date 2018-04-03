@@ -16,6 +16,8 @@ final class DataManager {
 
     private let modelName = "innova"
     
+    public var selectedAddressToSend: String = ""
+    
     private let walletJSONKey = "com.innova.WalletJSON"
     private let pendingJSONKey = "com.innova.PendingJSON"
     private let sequrityQuestionJSON = "com.innova.SequrityQuestionsJSON"

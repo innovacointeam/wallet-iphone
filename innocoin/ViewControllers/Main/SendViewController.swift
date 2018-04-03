@@ -54,6 +54,8 @@ class SendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         origin = view.frame.origin.y
+        receiverField.insertText(DataManager.shared.selectedAddressToSend)
+        DataManager.shared.selectedAddressToSend = ""
     }
     
     private func registerForKeyboardNotifcation() {
