@@ -13,10 +13,10 @@ struct InnovaConstanst {
     static let confirmationCountForConfirmTransaction = 10
     static let maxConfirmationsCountToShow: Int64 = 20
     
-    static let innovaURLScheme = "http"
-    static let innovaURLHost = "159.89.109.174"
+    static let innovaURLScheme = "https"
+    static let innovaURLHost = "wallet.innovacoin.info"
     static let innovaAPIPath = "/api/v1.0"
-    static let innoHost = URL(string: "http://159.89.109.174/api/v1.0")!
+    static let innoHost = URL(string: "https://wallet.innovacoin.info/api/v1.0")!
     static let innovaTermsAndServiceLink = URL(string: "https://innovacoin.info/terms-of-service")!
     static let innovePrivacyPolicyLink = URL(string: "https://innovacoin.info/privacy-policy")!
     static let supportEmail = "support@innovacoin.info"
