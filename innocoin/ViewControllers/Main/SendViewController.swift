@@ -49,13 +49,21 @@ class SendViewController: UIViewController {
         registerForKeyboardNotifcation()
         descriptionField.delegate = self
         receiverField.delegate = self
+        loadAddressFromBook()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         origin = view.frame.origin.y
-        receiverField.insertText(DataManager.shared.selectedAddressToSend)
-        DataManager.shared.selectedAddressToSend = ""
+        loadAddressFromBook()
+    }
+    
+    fileprivate func loadAddressFromBook() {
+        if(!DataManager.shared.selectedAddressToSend.isEmpty){
+            print(DataManager.shared.selectedAddressToSend)
+            receiverField.text = DataManager.shared.selectedAddressToSend
+            DataManager.shared.selectedAddressToSend = ""
+        }
     }
     
     private func registerForKeyboardNotifcation() {
